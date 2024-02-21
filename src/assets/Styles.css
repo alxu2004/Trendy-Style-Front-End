@@ -1,0 +1,278 @@
+/* Header */
+.headerNav{
+    position: sticky;
+    background-color: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.6); 
+}
+@media screen and (max-width: 700px) {
+    .headerNav {
+        box-shadow: none; 
+    }
+}
+.headerLogo{
+    width: 5%;
+    height: auto;
+    margin-right: 20px;
+}
+.navBar {
+    display: flex;
+    align-items: center;
+    margin: 0 5%;
+}
+.navBar ul{
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    width: 45%;
+    justify-content: center;
+}
+.navBar ul li{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+.navMenu{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    transition: all 300ms;
+    border: 0px solid transparent;
+    padding: 10px 10px ;
+}
+.navMenu:hover{
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(103, 103, 103);
+    background-color: rgb(242, 242, 242);
+    border: 0px solid black;
+    border-radius: 20px;
+}
+.navBar input {
+    flex-grow: 1;
+    margin: 0 10%; 
+    width: auto;
+    font-size: 16px;
+    width: 20%; 
+    height: 1.4em; 
+    border: 0px solid rgba(234, 234, 234, 0.498);
+    border-radius: 20px;
+    outline: none;
+    background-color: rgb(242, 242, 242);
+    padding: 7px 10px;
+    transition: all 300ms;
+    cursor: pointer;
+}
+.navBar input:hover{
+    background-color: rgb(210, 210, 210); ;
+}
+.navCarrito{
+    width: 100%;
+    height: 100%;
+}
+.navCarro{
+    width: 30px;
+    height: auto;
+    margin: 0 1%;
+    border-radius: 100px;
+    padding: 3px 6px;
+    transition: all 300ms;
+}
+.navCarro:hover{
+    background-color: #eaeaea;
+}
+.access{
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    transition: all 100ms;
+    border: 0px solid transparent;
+    border-radius: 20px;
+    padding: 10px 10px ;
+    background-color: #FF7F50;
+    
+}
+.access:hover{
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(92, 92, 92);
+    background-color: #fcb298;
+    outline: 2px solid rgb(255, 98, 0);
+    border-radius: 20px;
+}
+
+/* Access */
+.m-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.m-container{
+    background-image: url(../assets/BackAccess.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 75px;
+    margin: 0; 
+    overflow-y: auto;
+}
+.container{
+    width: 100%;
+    padding: 35px 0px;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+.back-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 126, 71, 0.559)
+    
+}
+.back-box div{
+    margin: 100px 40px;
+    color: white;
+    transition: all 500ms;
+}
+.back-box div p, .back-box div button{
+    margin-top: 30px;
+}
+.back-box div h3{
+    font-weight: 400;
+    font-size: 26px;
+}
+.back-box button{
+    padding: 10px 40px;
+    border: 2px solid white;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+}
+.back-box button:hover{
+    background-color: white;
+    color: #FF7F50;
+}
+.front-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    top: -185px;
+    left: 10px;
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+}
+.front-box form{
+    width: 100%;
+    padding: 80px 20px;
+    background-color: white;
+    position: absolute;
+    border-radius: 20px;
+}
+.front-box form h2{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FF7F50;
+}
+.front-box form input{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    transition: all 400ms;
+}
+.front-box form input:hover{
+    background-color: #ffd2c1;
+}
+.front-box form button{
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background-color: #FF7F50;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+.login{
+    opacity: 1;
+    display: block;
+}
+.register{
+    display: none;
+}
+@media screen and (max-width){
+    main{
+        margin-top: 50px;
+    }
+    .back-box{
+        max-width: 350px;
+        height: 300px;
+        flex-direction: column;
+        margin: auto;
+    }
+    .back-box div{
+        margin: 0px;
+        position: absolute;
+    }
+    .front-box{
+        top: -10px;
+        left: -5px;
+        margin: auto;
+    }
+    .front-box form{
+        position: relative;
+    }
+}
+/* ShoesCards */
+.products{
+    
+    position: relative;
+    display: grid;
+    margin: 0 8%;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+    gap: 16px;
+}
+/* ShoesCard */
+.product {
+    text-decoration: none;
+    color: black;
+}
+.productCard{
+    background-color: #ffffff;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 80%;
+    height: auto;
+    padding: 10% 10%;
+    
+}
+.productContent  :last-child{
+    font-weight: 700;
+}
+/* Ad */
+.bannerPublic{
+    width: 100%;
+    height: auto;
+}
