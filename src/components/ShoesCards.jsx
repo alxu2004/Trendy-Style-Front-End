@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { ShoesCard } from "./ShoesCard";
 import '../assets/Styles.css'
+import PropTypes from 'prop-types';
 
 
-export const ShoesCards = () => {
+export const ShoesCards = ({ searchResults }) => {
     const [products,setProducts] = useState([])
 
     useEffect(()=>{
@@ -13,11 +14,11 @@ export const ShoesCards = () => {
         .catch(error  => console.error('Error', error));
     },[])
 
-
+    const productsToDisplay = searchResults.length > 0 ? searchResults : products;
   return (
         <section className="products">
             {
-                products.map((product)=>{
+                productsToDisplay.map((product)=>{
                     return <ShoesCard 
                     key={product.id}
                     name={product.name}
@@ -30,3 +31,6 @@ export const ShoesCards = () => {
         </section>
   )
 }
+ShoesCards.propTypes = {
+    searchResults: PropTypes.array.isRequired 
+  };

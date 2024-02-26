@@ -24,3 +24,5 @@ export const registerF = () => {
         backBoxRegister.style.opacity = "0";
         backBoxLogin.style.opacity = "1";
 }
+
+  
