@@ -10,9 +10,11 @@ import { useState } from 'react'
 export const Header = ({ searchTerm, onSearchChange, onSearch }) => {
 
   const [loggedIn, setLoggedIn] = useState(false);
+  
   const handleLogin =() =>{
       setLoggedIn(!loggedIn)
   }
+  console.log(loggedIn)
   return (
     <header className='headerNav'>
       <nav className='navBar'>

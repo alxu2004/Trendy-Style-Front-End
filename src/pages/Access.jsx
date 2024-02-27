@@ -5,7 +5,42 @@ import { useState } from 'react';
 
 
 export const Access = () => {
+    
+    const [loginFormData , setLoginFormData ] = useState({
+        email: '',
+        password: ''
+    })
 
+    const handleLoginChange = (e) => {
+        const { name, value } = e.target;
+        setLoginFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:8080/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginFormData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                alert('Error en el inicio de sesión');
+                throw new Error('Network response was not ok');
+            } else {
+                alert('Inicio de sesión exitoso');
+                
+            }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            alert('Error en el inicio de sesión');
+        });
+    };
     const [registerFormData, setRegisterFormData] = useState({
         name: '',
         email: '',
@@ -21,7 +56,6 @@ export const Access = () => {
     };
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
-        
         fetch('http://localhost:8080/user/register', {
             method: 'POST',
             headers: {
@@ -31,26 +65,17 @@ export const Access = () => {
         })
         .then(response => {
             if (!response.ok) {
-
                 alert('Error en el registro')
-
                 throw new Error('Network response was not ok');
-
             }else{
-
                 alert('Se ha registrado correctamente')
-                
                 setRegisterFormData({
                     name: '',
                     email: '',
                     password: '',
                     password2: ''
                 });
-                
             }
-            
-
-            
         })
         .catch(error => {
             console.error('Fetch error:', error);
@@ -62,7 +87,6 @@ export const Access = () => {
   return (
     <main className="m-container">
         <div className="container">
-            {/* info about access */}
             <section className="back-box">
                 <div className="back-box-login">
                     <h3>¿Ya tienes cuenta?</h3>
@@ -75,16 +99,23 @@ export const Access = () => {
                     <button className="btn-register" onClick={registerF}>Registrarse</button>
                 </div>
             </section>
-            {/* Login and register form */}
             <section className="front-box">
-                {/* Login form */}
-                <form action="" className="login">
+                <form onSubmit={handleLoginSubmit} className="login">
                     <h2>Iniciar sesión</h2>
-                    <input type="email" placeholder="Correo electronico" required />
-                    <input type="password"  placeholder="contraseña" required/>
+                    <input  type="email" 
+                            name="email" 
+                            value={loginFormData.email} 
+                            onChange={handleLoginChange} 
+                            placeholder="Correo electrónico" 
+                            required  />
+                    <input type="password" 
+                            name="password" 
+                            value={loginFormData.password} 
+                            onChange={handleLoginChange} 
+                            placeholder="Contraseña" 
+                            required/>
                     <button type="submit">ingresar</button>
                 </form>
-                {/* Register form */}
                 <form onSubmit={handleRegisterSubmit} className="register">
                     <h2>registrarse</h2>
                     <input  type="name"
