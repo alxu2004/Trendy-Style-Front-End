@@ -7,7 +7,7 @@ import { useState,useEffect } from 'react';
 export const Home = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]); // Nuevo estado para los productos filtrados
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     fetch('src/api/products.json')
