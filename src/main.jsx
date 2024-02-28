@@ -17,6 +17,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/listar' Component={UsersList}/>
       </Routes>
     </BrowserRouter>
-
   </React.StrictMode>,
 )

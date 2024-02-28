@@ -2,9 +2,12 @@ import "../assets/Styles.css"
 import { loginF } from "../functions/login";
 import { registerF } from './../functions/login';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 export const Access = () => {
+
+    const navigate = useNavigate();
+
     
     const [loginFormData , setLoginFormData ] = useState({
         email: '',
@@ -20,7 +23,7 @@ export const Access = () => {
     };
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/user/login', {
+        fetch('http://localhost:8080/api/v1/auth/authenticate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,8 +35,7 @@ export const Access = () => {
                 alert('Error en el inicio de sesión');
                 throw new Error('Network response was not ok');
             } else {
-                alert('Inicio de sesión exitoso');
-                
+                navigate('/');
             }
         })
         .catch(error => {
@@ -44,8 +46,8 @@ export const Access = () => {
     const [registerFormData, setRegisterFormData] = useState({
         name: '',
         email: '',
-        password: '',
-        password2: ''
+        password: ''
+        // password2: ''
     });
     const handleRegisterChange = (e) => {
         const { name, value } = e.target;
@@ -56,7 +58,7 @@ export const Access = () => {
     };
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/user/register', {
+        fetch('http://localhost:8080/api/v1/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': "application/json"
@@ -72,8 +74,8 @@ export const Access = () => {
                 setRegisterFormData({
                     name: '',
                     email: '',
-                    password: '',
-                    password2: ''
+                    password: ''
+                    // password2: ''
                 });
             }
         })
@@ -135,11 +137,11 @@ export const Access = () => {
                             placeholder="contraseña" required 
                             minLength={8}
                             />
-                    <input type="password"
+                    {/* <input type="password"
                             name="password2"
                             value={registerFormData.password2}
                             onChange={handleRegisterChange}
-                            placeholder="confirmar contraseña" required/>
+                            placeholder="confirmar contraseña" required/> */}
                     <button type="submit">registrarse</button>
 
                 </form>

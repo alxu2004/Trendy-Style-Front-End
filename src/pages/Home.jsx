@@ -8,6 +8,7 @@ export const Home = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  
 
   useEffect(() => {
     fetch('src/api/products.json')
