@@ -20,9 +20,9 @@ export const Header = ({ searchTerm, onSearchChange, onSearch }) => {
       <nav className='navBar'>
         <img className='headerLogo' src={logo} alt="" />
         <ul className='navBtn'>
-          <li><a className='navMenu' href="">Hombre</a></li>
-          <li><a className='navMenu' href="">Mujer</a></li>
-          <li><a className='navMenu' href="">Niños</a></li>
+          <li><NavLink className='navMenu' href="" to="/men" >Hombre</NavLink></li>
+          <li><NavLink className='navMenu' href="" to="/women" >Mujer</NavLink></li>
+          <li><NavLink className='navMenu' href="" to="/child" >Niños</NavLink></li>
         </ul>
         <div className='searchContainer'>
           <input className="searchBar" type="text" placeholder='¿Que Buscas?' value={searchTerm} onChange={onSearchChange}/>

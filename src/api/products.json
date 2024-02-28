@@ -6,7 +6,7 @@
       "price":"$120",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"children"   
     },
     {
       "id":2,
@@ -15,7 +15,7 @@
       "price":"$400",
       "brand":"Jordan",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"women"   
     },
     {
       "id":3,
@@ -24,7 +24,7 @@
       "price":"$90",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"women"   
     },
     {
       "id":4,
@@ -33,7 +33,7 @@
       "price":"$350",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"women"   
     },
     {
       "id":5,
@@ -42,7 +42,7 @@
       "price":"$160",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"women"   
     },
     {
       "id":6,
@@ -51,7 +51,7 @@
       "price":"$100",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"Unisex"   
+      "category":"women"   
     },
     {
       "id":7,
@@ -60,7 +60,7 @@
       "price":"$1500",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"Unisex"
+      "category":"women"
     },
     {
       "id":8,
@@ -69,7 +69,7 @@
       "price":"$320",
       "brand":"Nike",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"Unisex"   
+      "category":"women"   
     },
     {
       "id":9,
@@ -78,7 +78,7 @@
       "price":"$1000",
       "brand":"Jordan",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category": "unisex"  
+      "category": "children"  
     },
     {
       "id":10,
@@ -87,7 +87,7 @@
       "price":"$280",
       "brand":"Bape",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"children"   
     },
     {
       "id":11,
@@ -96,7 +96,7 @@
       "price":"$900",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex" 
+      "category":"children" 
     },
     {
       "id":12,
@@ -105,7 +105,7 @@
       "price":"$1270",
       "brand":"Adidas",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"man"   
+      "category":"children"   
     },
     {
       "id":13,
@@ -114,7 +114,7 @@
       "price":"$230",
       "brand":"Nike",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"man"   
     },
     {
       "id":14,
@@ -123,7 +123,7 @@
       "price":"$75",
       "brand":"Nike",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"man"   
     },
     {
       "id":15,
@@ -132,7 +132,7 @@
       "price":"$300",
       "brand":"Nike",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex" 
+      "category":"man" 
     },
     {
       "id":16,
@@ -141,7 +141,7 @@
       "price":"$347",
       "brand":"Nike",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"man"   
     },
     {
       "id":17,
@@ -150,7 +150,7 @@
       "price":"$327",
       "brand":"Nike",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":""   
+      "category":"man"   
     },
     {
       "id":18,
@@ -168,7 +168,7 @@
       "price":"$110",
       "brand":"Nike",
       "detail":"a really good shoes made whit the best materials from the market ",
-      "category":"unisex"   
+      "category":"man"   
     },
     {
       "id":20,
