@@ -17,9 +17,8 @@ Las dependencias para poder correr exitosamente proyecto ya vienen establecidas 
 ## Estado del proyecto
 El proyecto actualmete se encuentra en desarrollo
 
-## Creditos
-### Contactanos
-### Desarrolladores
+## Contactanos
+
 ## Cesar Ramirez
 Cesaralejandroramirezzuluaga@gmail.com
 ## Andrey Campiño 
