@@ -7,5 +7,5 @@ TrendyStyle es un ecommerce de zapatos que busca traer el mejor estilo al mercad
 ### Instalación de los programas
 1. Instalar node.js
 2. Instalar algun entorno de desarrollo para ejecutar la parte del front (Visual Studio Code) Recomendado.
-### Aclaración
+##### Aclaración
 Las dependencias para poder correr exitosamente proyecto ya vienen establecidas en el package.json y no hay necesidad de volverlas a instalar.
