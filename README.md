@@ -7,14 +7,15 @@ TrendyStyle es un ecommerce de zapatos que busca traer el mejor estilo al mercad
 ### Programas necesarios
 - Instalar node.js
 - Instalar algun entorno de desarrollo para ejecutar la parte del front (Visual Studio Code) Recomendado.
-3. Crear una carpeta y abrir el git Bash en la carpeta.
-4. Dentro de la carpeta realizamos git init para inicializar el repositrio.
-5.Usar el comando git remote add origin y el link del repositorio que deseas clonar.
-6. Usar el comando git clone y el link del repositorio que deseas clonar.
-7. Luego en la misma terminar ejecutas code . para abrir directamente el proyecto en visual studio code
-8. verificar que todas las dependencias esten instaladas para ejecutar correctamente el proyecto.
-9. si no lo estan debes abrir una terminal y ejecutar el comando npm i para instalarlas
-10. para poder abrir la vista del proyecto necesitamos abrir una terminal y ejecutar el comando: npm run dev
+### Utilizacion del proyecto
+1. Crear una carpeta y abrir el git Bash en la carpeta.
+2. Dentro de la carpeta realizamos git init para inicializar el repositrio.
+3.Usar el comando git remote add origin y el link del repositorio que deseas clonar.
+4. Usar el comando git clone y el link del repositorio que deseas clonar.
+5. Luego en la misma terminar ejecutas code . para abrir directamente el proyecto en visual studio code
+6. verificar que todas las dependencias esten instaladas para ejecutar correctamente el proyecto.
+7. si no lo estan debes abrir una terminal y ejecutar el comando npm i para instalarlas
+8. para poder abrir la vista del proyecto necesitamos abrir una terminal y ejecutar el comando: npm run dev
     
 ## Estructura del proyecto
 ### Explicación de los directorios y archivos principales:
