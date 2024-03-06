@@ -13,19 +13,18 @@ Las dependencias para poder correr exitosamente proyecto ya vienen establecidas 
 ## Estructura del proyecto
 ### Explicación de los directorios y archivos principales:
 
-<span style="color:blue">public/:</span> Contiene archivos estáticos como HTML, imágenes, iconos, etc. El archivo index.html es el punto de entrada principal de la aplicación.
-src/: Contiene el código fuente de la aplicación.
-assets/: Contiene recursos estáticos como imágenes, estilos CSS, fuentes, etc.
-components/: Contiene componentes reutilizables de la interfaz de usuario.
-pages/: Contiene componentes que representan diferentes páginas o vistas de la aplicación.
-utils/: Contiene utilidades y funciones auxiliares.
-App.js: El componente principal de la aplicación que engloba todos los demás componentes.
-index.js: El punto de entrada de JavaScript de la aplicación, donde se renderiza el componente principal en el DOM.
-.gitignore: Archivo que especifica los archivos y directorios que se deben ignorar en el control de versiones de Git.
+**public/:** Contiene archivos estáticos como HTML, imágenes, iconos, etc. El archivo index.html es el punto de entrada principal de la aplicación.
+**src/:** Contiene el código fuente de la aplicación.
+**assets/:** Contiene recursos estáticos como imágenes, estilos CSS, fuentes, etc.
+**components/:** Contiene componentes reutilizables de la interfaz de usuario.
+**pages/:** Contiene componentes que representan diferentes páginas o vistas de la aplicación.
+**utils/:** Contiene utilidades y funciones auxiliares.
+**App.js:** El componente principal de la aplicación que engloba todos los demás componentes.
+**index.js:** El punto de entrada de JavaScript de la aplicación, donde se renderiza el componente principal en el DOM.
+**.gitignore:** Archivo que especifica los archivos y directorios que se deben ignorar en el control de versiones de Git.
+**package.json:** Archivo de configuración de npm que contiene las dependencias del proyecto y los scripts de inicio, compilación, etc.
+**README.md:** Archivo de README que proporciona información sobre el proyecto, su estructura y cómo utilizarlo.
 
-package.json: Archivo de configuración de npm que contiene las dependencias del proyecto y los scripts de inicio, compilación, etc.
-
-README.md: Archivo de README que proporciona información sobre el proyecto, su estructura y cómo utilizarlo.
 ## Uso del proyecto
 
 ## Estado del proyecto
