@@ -13,7 +13,7 @@ Las dependencias para poder correr exitosamente proyecto ya vienen establecidas 
 ## Estructura del proyecto
 ### Explicación de los directorios y archivos principales:
 
-public/: Contiene archivos estáticos como HTML, imágenes, iconos, etc. El archivo index.html es el punto de entrada principal de la aplicación.<span style="color:blue">Este texto aparecerá en azul.</span>
+<span style="color:blue">public/:</span> Contiene archivos estáticos como HTML, imágenes, iconos, etc. El archivo index.html es el punto de entrada principal de la aplicación.
 src/: Contiene el código fuente de la aplicación.
 assets/: Contiene recursos estáticos como imágenes, estilos CSS, fuentes, etc.
 components/: Contiene componentes reutilizables de la interfaz de usuario.
