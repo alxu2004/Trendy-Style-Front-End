@@ -4,9 +4,9 @@
 TrendyStyle es un ecommerce de zapatos que busca traer el mejor estilo al mercado, nuestro proposito es brindar productos con la mejor calidad del mercado a nuestros clientes, brindar la mejor calidad de servicio posible para generar una mejor comodidad y confiabilidad a la hora de comprar nuestros productos.
 
 ## Instrucciones para la instalación y utilización del proyecto 
-### Instalación de los programas
-1. Instalar node.js
-2. Instalar algun entorno de desarrollo para ejecutar la parte del front (Visual Studio Code) Recomendado.
+### Programas necesarios
+- Instalar node.js
+- Instalar algun entorno de desarrollo para ejecutar la parte del front (Visual Studio Code) Recomendado.
 3. Crear una carpeta y abrir el git Bash en la carpeta.
 4. Dentro de la carpeta realizamos git init para inicializar el repositrio.
 5.Usar el comando git remote add origin y el link del repositorio que deseas clonar.
