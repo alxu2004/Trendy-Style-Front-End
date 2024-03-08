@@ -7,7 +7,6 @@
 }
 /* Header */
 .headerNav{
-    position: fixed;
     background-color: var(--primaryColor);
     box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.6); 
     z-index: 10;
@@ -19,7 +18,7 @@
     }
 }
 .headerLogo{
-    width: 17%;
+    width: 100%;
     height: auto;
     margin-right: 10px;
     
@@ -29,16 +28,15 @@
     align-items: center;
     margin: 0 5%;
 }
-.navBar ul{
+.logoHeader{
+    width: 15%;
+}
+.navBtn{
     display: flex;
     list-style-type: none;
     padding: 0;
-    width: 45%;
+    width: 30%;
     justify-content: center;
-}
-.navBar ul li{
-    margin-left: 3%;
-    margin-right: 3%;
 }
 .navMenu{
     text-decoration: none;
@@ -47,6 +45,7 @@
     transition: all 300ms;
     border: 0px solid transparent;
     padding: 10px 10px ;
+    width: 30%;
 }
 .navMenu:hover{
     text-decoration: none;
@@ -67,6 +66,7 @@
 .searchContainer{
     display: flex;
     align-items: center;
+    width: 30%;
 }
 .searchBar {
     flex-grow: 1;
@@ -89,7 +89,7 @@
 .btnSearch{
     margin: 0;
     border-radius: 0px 20px 20px 0px;
-    padding: 6.5px 5px;
+    padding: 4px 10px;
     cursor: pointer;
     outline: none;
     border-width: 2px 2px 2px 0;
@@ -105,7 +105,7 @@
 .navCarro{
     width: 30px;
     height: auto;
-    margin: 0 1%;
+    margin: 0 4%;
     border-radius: 100px;
     padding: 3px 6px;
     transition: all 300ms;
@@ -328,13 +328,13 @@
     }
 }
 /* ShoesCards */
-.products{
-    
+
+.products {
     position: relative;
     display: grid;
-    margin: 0 8%;
-    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-    gap: 16px;
+    margin: 5% 8%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr) ) ; 
+    gap: 30px;
 }
 /* ShoesCard */
 .product {
@@ -355,12 +355,108 @@
     height: auto;
 }
 .productContent  :last-child{
-    font-weight: 700;
-    font-size: 19px;
+    font-weight: 800;
+    font-size: 20px;
+    
 }
 /* Ad */
 .bannerPublic{
-
+    display: block;
     width: 100%;
     height: auto;
 }
+/* UserCard */
+.sidebar-profile {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+  }
+  .profile-info img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .profile-info h2,
+  .profile-info p {
+    margin: 0;
+  }
+  .profile-links ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .profile-links li {
+    margin-bottom: 10px;
+  }
+  .profile-links a {
+    color: #333;
+    text-decoration: none;
+  }
+  .profile-links a:hover {
+    color: #666;
+  }
+  /* ProfileForm */
+  .profile-form {
+    width: 300px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  .profile-form h2 {
+    margin-top: 0;
+  }
+  .profile-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile-form label {
+    margin-bottom: 5px;
+  }
+  .profile-form input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .profile-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .profile-form button:hover {
+    background-color: #0056b3;
+  }
+  /* Profile */
+  .user-profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+  }
+  /* UserList */
+  .backTable{
+   position: absolute;
+
+  }
+  .table{
+    position: relative;
+    top: 100px;
+    left: 100%;
+  }
+  .titleTable{
+    background-color: gray;
+    outline: 2px solid black;
+  }
+  .contentTable{
+    background-color: rgb(196, 196, 196);
+    outline: 2px solid black;
+  }
+  .contentTable td{
+    padding: 5px 20px;
+    
+  }

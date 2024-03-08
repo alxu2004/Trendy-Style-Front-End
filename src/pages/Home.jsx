@@ -3,12 +3,17 @@ import { Ad } from '../components/Ad';
 import { ShoesCards } from '../components/ShoesCards';
 import { Header } from './../components/Header';
 import { useState,useEffect } from 'react';
+import { useRef } from 'react';
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  
+  const sectionRef = useRef(null);
+
+  const scrollToSection = () => {
+    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     fetch('src/api/products.json')
@@ -33,9 +38,10 @@ export const Home = () => {
         searchTerm={searchTerm}
         onSearchChange={handleSearchChange}
         onSearch={handleSearch}
+        scroll = {scrollToSection}
       />
       <Ad />
-      <ShoesCards searchResults={searchResults.length > 0 ? searchResults : products} />
+      <ShoesCards searchResults={searchResults.length > 0 ? searchResults : products} section = {sectionRef}/>
     </>
   )
 }

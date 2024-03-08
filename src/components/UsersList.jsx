@@ -4,7 +4,7 @@ export const UsersList = () => {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/user/list')
+        fetch('http://localhost:8080/api/v1/auth/list')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -23,24 +23,28 @@ export const UsersList = () => {
     }, []);
 
     return (
-        <div>
+        <div className='backTable'>
             <table className="table">
                 <thead>
-                    <tr>
+                    <tr className='titleTable'>
                         <th>id</th>
                         <th>name</th>
+                        <th>email</th>
                     </tr>
                 </thead>
                 <tbody>
                     {user.length === 0 ? (
-                        <tr>
+                        <tr className='contentTable'>
+                            <td>No hay Usuario</td>
+                            <td>No hay Usuario</td>
                             <td>No hay Usuario</td>
                         </tr>
                     ) : (
                         user.map(userData => (
-                            <tr key={userData.id}>
+                            <tr className='contentTable' key={userData.id}>
                                 <th>{userData.id}</th>
                                 <td>{userData.name}</td>
+                                <td>{userData.email}</td>
                             </tr>
                         ))
                     )}

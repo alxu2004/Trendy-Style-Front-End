@@ -5,7 +5,7 @@ export const ShoesCard = (props) => {
     const img = props.img
     const name = props.name
     const price = props.price
-    const detail = props.detail
+
 
   return (
     <a className='product' href="">
@@ -15,7 +15,6 @@ export const ShoesCard = (props) => {
         </section>
         <section className='productContent'>
             <p>{name}</p>
-            <p>{detail}</p>
             <p>{price}</p>
         </section>
       </article>

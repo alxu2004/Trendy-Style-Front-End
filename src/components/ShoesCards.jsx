@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { ShoesCard } from "./ShoesCard";
 import '../assets/Styles.css'
 import PropTypes from 'prop-types';
 
 
-export const ShoesCards = ({ searchResults }) => {
+export const ShoesCards = ({ searchResults,section }) => {
     const [products,setProducts] = useState([])
 
     useEffect(()=>{
@@ -16,7 +17,8 @@ export const ShoesCards = ({ searchResults }) => {
 
     const productsToDisplay = searchResults.length > 0 ? searchResults : products;
   return (
-        <section className="products">
+        <article className="shoes">
+            <section className="products" ref={section}>
             {
                 productsToDisplay.map((product)=>{
                     return <ShoesCard 
@@ -28,7 +30,9 @@ export const ShoesCards = ({ searchResults }) => {
                     />
                 })
             }
-        </section>
+            </section>
+        </article>
+        
   )
 }
 ShoesCards.propTypes = {

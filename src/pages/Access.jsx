@@ -1,10 +1,20 @@
 import "../assets/Styles.css"
 import { loginF } from "../functions/login";
 import { registerF } from './../functions/login';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from './../hooks/useAuth';
+import { UserContext } from "../context/UserContext";
 
 export const Access = () => {
+
+    const {saveUser} = useContext(UserContext);
+
+    const { isLoggedIn, setIsLoggedIn} = useAuth()
+
+    const handleIsLoggedIn =()=>{
+        setIsLoggedIn(!isLoggedIn)
+    }
 
     const navigate = useNavigate();
 
@@ -36,13 +46,22 @@ export const Access = () => {
                 throw new Error('Network response was not ok');
             } else {
                 navigate('/');
+                handleIsLoggedIn();
+    
+                return response.json();
             }
+        })
+        .then(dataUser => {
+            saveUser(dataUser);
+            console.log(dataUser);
+            console.log(dataUser.user.name)
         })
         .catch(error => {
             console.error('Fetch error:', error);
             alert('Error en el inicio de sesión');
         });
     };
+    
     const [registerFormData, setRegisterFormData] = useState({
         name: '',
         email: '',
@@ -135,7 +154,7 @@ export const Access = () => {
                             value={registerFormData.password}
                             onChange={handleRegisterChange}
                             placeholder="contraseña" required 
-                            minLength={8}
+                            minLength={4}
                             />
                     {/* <input type="password"
                             name="password2"
