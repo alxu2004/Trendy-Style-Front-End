@@ -42,6 +42,7 @@ export const Access = () => {
         })
         .then(response => {
             if (!response.ok) {
+                // TODO: Change the alert for good handle of aplication
                 alert('Error en el inicio de sesión');
                 throw new Error('Network response was not ok');
             } else {

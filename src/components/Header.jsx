@@ -31,23 +31,23 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
         </ul>
         <div className='searchContainer'>
           <input className="searchBar" type="text" placeholder='¿Que Buscas?' value={searchTerm} onChange={onSearchChange}/>
-          <button className='btnSearch' onClick={buttonSearch}><img src={loup} alt="" width='26px' height='auto' /></button>
+          <button className='btnSearch' type='submit' onClick={buttonSearch}><img src={loup} alt="" width='26px' height='auto' /></button>
         </div>
         <NavLink className='navCarro' href="" to='/listar'><img className='navCarrito' src={bag} alt="" /></NavLink>
         {
-          isLoggedIn ?<NavLink className='access' href="" to="/Access" >Acceder</NavLink> 
-          : <>
-            <div className="user-dropdown">
-              <span className="user-dropdown-btn">Usuario</span>
-              <div className="user-dropdown-content">
-                <ol className='navUserList'>
-                  <li><NavLink to="/profile">Perfil</NavLink></li>
-                  <li><NavLink to="/user-list" >Lista de Usuarios</NavLink></li>
-                  <li><NavLink to="/" onClick={handleIsLoggedIn}>Cerrar sesión</NavLink></li>
-                </ol>
-              </div>
-          </div>
-          </>
+          isLoggedIn ?<>
+          <div className="user-dropdown">
+            <span className="user-dropdown-btn">Usuario</span>
+            <div className="user-dropdown-content">
+              <ol className='navUserList'>
+                <li><NavLink to="/profile">Perfil</NavLink></li>
+                <li><NavLink to="/user-list" >Lista de Usuarios</NavLink></li>
+                <li><NavLink to="/" onClick={handleIsLoggedIn}>Cerrar sesión</NavLink></li>
+              </ol>
+            </div>
+        </div>
+        </>
+          :  <NavLink className='access' href="" to="/Access" >Acceder</NavLink> 
         }
       </nav>
       <Outlet />

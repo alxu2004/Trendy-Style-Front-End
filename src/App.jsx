@@ -11,22 +11,23 @@ import { ProfileAddAcount } from './pages/ProfileAddAcount';
 import { UsersList } from "./components/UsersList"
 
 
+
 function App() {
 
   return (
     <>
     <BrowserRouter>
       <Routes>
-        <Route path='/' Component={Home} />
-        <Route path='/Access' Component={Access} />
-        <Route path='/men' Component={Men} />
-        <Route path='/women' Component={Women}/>
-        <Route path='/child' Component={Child} />
-        <Route path="/profile" Component={Profile}  />
-        <Route path="/user-list" Component={UsersList}/>
-        <Route path="/profile/my-acount" Component={ProfileMyAcount}/>
-        <Route path="/profile/add-acount" Component={ProfileAddAcount}/>
-        <Route path="/profile/edit-acount" Component={ProfileEditAcount}/>
+        <Route path='/' element={<Home/>} />
+        <Route path='/Access' element={<Access/>} />
+        <Route path='/men' element={<Men/>} />
+        <Route path='/women' element={<Women/>}/>
+        <Route path='/child' element={<Child/>} />
+        <Route path="/profile" element={<Profile/>}  />
+        <Route path="/user-list" element={<UsersList/>}/>
+        <Route path="/profile/my-acount" element={<ProfileMyAcount/>}/>
+        <Route path="/profile/add-acount" element={<ProfileAddAcount/>}/>
+        <Route path="/profile/edit-acount" element={<ProfileEditAcount/>}/>
       </Routes>
     </BrowserRouter>
     </>
