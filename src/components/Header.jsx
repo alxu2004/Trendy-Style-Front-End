@@ -5,10 +5,15 @@ import bag from '../assets/Cesta.png'
 import loup from '../assets/search.png'
 import { NavLink, Outlet } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
+import { useContext } from 'react'
+import { UserContext } from '../context/UserContext'
 
 
 export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
 
+  const {user} = useContext(UserContext)
+
+  console.log(user.user)
   const { isLoggedIn , setIsLoggedIn} = useAuth()
   
   const handleIsLoggedIn=()=>{
@@ -35,18 +40,20 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
         </div>
         <NavLink className='navCarro' href="" to='/listar'><img className='navCarrito' src={bag} alt="" /></NavLink>
         {
-          isLoggedIn ?<>
+          isLoggedIn ?
           <div className="user-dropdown">
             <span className="user-dropdown-btn">Usuario</span>
             <div className="user-dropdown-content">
               <ol className='navUserList'>
                 <li><NavLink to="/profile">Perfil</NavLink></li>
                 <li><NavLink to="/user-list" >Lista de Usuarios</NavLink></li>
+                {
+                  user.user.role === 'ADMIN' ?<li><NavLink to="/admin" >Herramientas de administrador</NavLink></li> : null
+                }
                 <li><NavLink to="/" onClick={handleIsLoggedIn}>Cerrar sesión</NavLink></li>
               </ol>
             </div>
         </div>
-        </>
           :  <NavLink className='access' href="" to="/Access" >Acceder</NavLink> 
         }
       </nav>

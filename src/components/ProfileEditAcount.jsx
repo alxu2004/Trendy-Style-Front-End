@@ -1,5 +1,5 @@
-import ProfileEdit from "../components/ProfileEdit"
-import { SideBarProfile } from "../components/SideBarProfile"
+import ProfileEdit from "./ProfileEdit"
+import { SideBarProfile } from "./SideBarProfile"
 
 
 export const ProfileEditAcount = () => {

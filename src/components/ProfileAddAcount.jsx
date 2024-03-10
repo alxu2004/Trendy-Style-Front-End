@@ -1,5 +1,5 @@
 
-import { SideBarProfile } from './../components/SideBarProfile';
+import { SideBarProfile } from './SideBarProfile';
 
 export const ProfileAddAcount = () => {
   return (

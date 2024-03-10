@@ -18,6 +18,7 @@ export const SideBarProfile = () => {
                 <li><NavLink to="/profile/my-acount" >Mi Cuenta</NavLink></li>
                 <li><NavLink to="/profile/add-acount">Agregar Datos Personales</NavLink></li>
                 <li><NavLink to="/profile/edit-Acount" >Editar contraseña</NavLink></li>
+                <li><NavLink to="/" >Volver</NavLink></li>
             </ul>
         </div>
     </aside>
