@@ -1,9 +1,7 @@
-
 import { Ad } from '../components/Ad';
 import { ShoesCards } from '../components/ShoesCards';
 import { Header } from './../components/Header';
-import { useState,useEffect } from 'react';
-import { useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
@@ -16,11 +14,27 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    fetch('src/api/products.json')
-      .then(response => response.json())
-      .then(data => setProducts(data))
-      .catch(error => console.error('Error', error));
+    fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/v1/producto/listar');
+      if (response.ok) {
+        const data = await response.json();
+        // Convertir imágenes de bytes a URLs
+        const productsWithImages = data.map(product => ({
+          ...product,
+          img: `data:image/jpeg;base64,${product.img}`
+        }));
+        setProducts(productsWithImages);
+      } else {
+        console.error('Error fetching products:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -32,16 +46,17 @@ export const Home = () => {
     );
     setSearchResults(filteredProducts);
   };
+
   return (
     <>
-        <Header
+      <Header
         searchTerm={searchTerm}
         onSearchChange={handleSearchChange}
         onSearch={handleSearch}
-        scroll = {scrollToSection}
+        scroll={scrollToSection}
       />
       <Ad />
-      <ShoesCards searchResults={searchResults.length > 0 ? searchResults : products} section = {sectionRef}/>
+      <ShoesCards searchResults={searchResults.length > 0 ? searchResults : products} section={sectionRef} />
     </>
-  )
-}
+  );
+};

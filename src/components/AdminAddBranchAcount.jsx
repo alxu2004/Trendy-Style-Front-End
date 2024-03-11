@@ -1,53 +1,50 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { SideBarAdmin } from './SideBarAdmin';
-import { UserContext } from '../context/UserContext';
 
 export const AdminAddBranchAcount = () => {
-
-  const {user} = useContext(UserContext)
-
-  const [addDataBranch, setAddDataBranch] = useState({
+  const [formData, setFormData] = useState({
     name: '',
-    img: '',
+    img: null,
   });
 
-  const handleAddBranchChange = (e) => {
-    const { name, value } = e.target;
-    setAddDataBranch(prevState => ({
+  const handleInputChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData(prevState => ({
       ...prevState,
-      [name]: value
+      [name]: files ? files[0] : value
     }));
   };
 
-  const handleAddBranchSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = user.token ; 
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('img', formData.img);
 
-    fetch('http://localhost:8080/api/v1/marca/guardar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify(addDataBranch)
-    })
-      .then(response => {
-        if (!response.ok) {
-          alert('Error al agregar la marca');
-          throw new Error('Network response was not ok');
-        } else {
-          alert('Se ha registrado correctamente');
-          setAddDataBranch({
-            name: '',
-            img: '',
-          });
-        }
-      })
-      .catch(error => {
-        console.error('Fetch error:', error);
-        alert('Error al agregar marca');
+    try {
+      const response = await fetch('http://localhost:8080/api/v1/marca/guardar', {
+        method: 'POST',
+        body: formDataToSend,
+
       });
+
+      if (!response.ok) {
+        throw new Error('Error al agregar la marca');
+      }
+      
+      alert('Marca agregada correctamente');
+
+     
+      setFormData({
+        name: '',
+        img: null,
+      });
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Hubo un error al agregar la marca');
+    }
   };
 
   return (
@@ -55,28 +52,27 @@ export const AdminAddBranchAcount = () => {
       <SideBarAdmin />
       <div className="profile-form">
         <h2>Agregar marca</h2>
-        <form onSubmit={handleAddBranchSubmit}>
+        <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="name">Nombre:</label>
             <input
               type="text"
               name="name"
-              value={addDataBranch.name}
-              onChange={handleAddBranchChange}
+              value={formData.name}
+              onChange={handleInputChange}
             />
           </div>
           <div>
-            <label htmlFor="email">imagen:</label>
+            <label htmlFor="img">Imagen:</label>
             <input
               type="file"
               name="img"
-              value={addDataBranch.img}
-              onChange={handleAddBranchChange}
+              onChange={handleInputChange}
             />
           </div>
-          <button type="submit">Save</button>
+          <button type="submit">Guardar</button>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};

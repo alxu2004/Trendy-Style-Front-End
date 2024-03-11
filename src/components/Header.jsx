@@ -13,7 +13,6 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
 
   const {user} = useContext(UserContext)
 
-  console.log(user.user)
   const { isLoggedIn , setIsLoggedIn} = useAuth()
   
   const handleIsLoggedIn=()=>{
