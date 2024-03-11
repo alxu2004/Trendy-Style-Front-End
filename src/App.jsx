@@ -12,6 +12,7 @@ import { UsersList } from "./components/UsersList"
 import { Admin } from "./pages/Admin"
 import { AdminAddBranchAcount } from "./components/AdminAddBranchAcount"
 import { AdminAddProductAcount } from "./components/AdminAddProductAcount"
+import { ProductDetailId } from './components/ProductDetailId';
 
 
 
@@ -22,6 +23,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>} />
+        <Route path="/detail/:id" element={<ProductDetailId/>} />
         <Route path='/Access' element={<Access/>} />
         <Route path='/men' element={<Men/>} />
         <Route path='/women' element={<Women/>}/>

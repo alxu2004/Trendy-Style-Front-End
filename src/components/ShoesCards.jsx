@@ -40,6 +40,7 @@ export const ShoesCards = ({ searchResults, section }) => {
                         name={product.name}
                         img={product.img}
                         price={product.price}
+                        id={product.id}
                     />
                 ))}
             </section>
