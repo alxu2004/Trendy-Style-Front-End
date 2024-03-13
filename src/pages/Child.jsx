@@ -1,26 +1,41 @@
 import { useState,useEffect } from "react"
 import { ShoesCard } from "../components/ShoesCard";
 import { Header } from "../components/Header";
-import { Ad } from "../components/Ad";
 
 
 export const Child = () => {
 
     const [productsChild, setProductsChild] = useState([])
 
-    useEffect(()=>{
-        fetch('src/api/products.json')
-        .then(response => response.json())
-        .then(data => setProductsChild(data))
-        .catch(error  => console.error('Error', error));
-    },[])
+    useEffect(() => {
+        fetchProducts();
+      }, []);
+    
+      const fetchProducts = async () => {
+        try {
+          const response = await fetch('http://localhost:8080/api/products/all');
+          if (response.ok) {
+            const data = await response.json();
+            // Convertir imágenes de bytes a URLs
+            const productsWithImages = data.map(product => ({
+              ...product,
+              img: `data:image/jpeg;base64,${product.img}`
+            }));
+            setProductsChild(productsWithImages);
+          } else {
+            console.error('Error fetching products:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error fetching products:', error);
+        }
+      };
+    
 
-    const childFilter = productsChild.filter((product) => product.category === "children")
+    const childFilter = productsChild.filter((product) => product.category.name === "niño")
 
   return (
     <>
         <Header/>
-        <Ad/>
         <section className="products">
             {
                 childFilter.map((product) => {
@@ -29,7 +44,6 @@ export const Child = () => {
                     name={product.name}
                     img={product.img}
                     price={product.price}
-                    detail={product.detail}
                     />
                 })
             }

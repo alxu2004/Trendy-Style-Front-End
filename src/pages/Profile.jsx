@@ -1,13 +1,13 @@
 
-import { SideBarProfile } from "../components/SideBarProfile"
+import { ProfileMyAcount } from "../components/ProfileMyAcount"
+
 
 
 
 export const Profile = () => {
   return (
     <div className="user-profile">
-      <SideBarProfile/>
-
+      <ProfileMyAcount/>
     </div>
   )
 }

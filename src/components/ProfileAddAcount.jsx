@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SideBarProfile } from './SideBarProfile';
+import { UserContext } from '../context/UserContext';
 
 export const ProfileAddAcount = () => {
+
+  const {user} = useContext(UserContext)
 
   const [formData, setFormData] = useState({
     lastname: '',
@@ -9,8 +12,9 @@ export const ProfileAddAcount = () => {
     num_cel: '',
     city_of_residence: '',
     address: '',
+    user_id: user.user.id
   });
-
+   
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -21,17 +25,15 @@ export const ProfileAddAcount = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formDataToSend = new FormData();
-    formDataToSend.append('lastname', formData.lastname); // Cambio en la forma de agregar el archivo
-    formDataToSend.append('cc', formData.cc);
-    formDataToSend.append('num_cel', formData.num_cel);
-    formDataToSend.append('city_of_residence', formData.city_of_residence);
-    formDataToSend.append('address', formData.address);
+
 
     try {
       const response = await fetch('http://localhost:8080/api/infoUsers/registrar', {
         method: 'POST',
-        body: formDataToSend
+        headers: {
+          'Content-Type': "application/json"
+      },
+        body: JSON.stringify(formData)
       });
       if (response.ok) {
         alert('Producto agregado exitosamente');
@@ -67,7 +69,7 @@ export const ProfileAddAcount = () => {
             <div>
               <label htmlFor="num_cel"> numero de celular:</label>
               <input
-                type="tel" id="num_cel" name="num_cel" value={formData.num_cel} onChange={handleInputChange} required 
+                type="text" id="num_cel" name="num_cel" value={formData.num_cel} onChange={handleInputChange} required 
               />
             </div>
             <div>
@@ -82,6 +84,7 @@ export const ProfileAddAcount = () => {
                 type="text" id="address" name="address" value={formData.address} onChange={handleInputChange} required 
               />
             </div>
+              <input type="hidden" name="user_id" id="user_id" value={formData.user_id} />
             <button type="submit">enviar</button>
           </form>
       </div>
