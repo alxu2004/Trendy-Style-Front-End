@@ -3,23 +3,42 @@ import { SideBarAdmin } from './SideBarAdmin';
 
 export const AdminAddProductAcount = () => {
   const [brands, setBrands] = useState([]);
+  const [categories , setCategories] = useState([])
   const [formData, setFormData] = useState({
     name: '',
-    precio: '',
+    price: '',
     img: '',
-    marcaId: ''
+    detail: '',
+    marca_id: '',
+    category_id: ''
   });
 
   useEffect(() => {
     fetchBrands();
+    fetchCategory()
   }, []);
 
   const fetchBrands = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/v1/marca/todas');
+      const response = await fetch('http://localhost:8080/api/marcas/todas');
       if (response.ok) {
         const data = await response.json();
         setBrands(data);
+        console.log(data)
+      } else {
+        console.error('Error fetching brands:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching brands:', error);
+    }
+  };
+  const fetchCategory = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/categories/all');
+      if (response.ok) {
+        const data = await response.json();
+        setCategories(data);
+        console.log(data)
       } else {
         console.error('Error fetching brands:', response.statusText);
       }
@@ -39,13 +58,15 @@ export const AdminAddProductAcount = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formDataToSend = new FormData();
-    formDataToSend.append('img', formData.img); // Cambio en la forma de agregar el archivo
+    formDataToSend.append('img', formData.img); 
     formDataToSend.append('name', formData.name);
-    formDataToSend.append('precio', formData.precio);
-    formDataToSend.append('marcaId', formData.marcaId);
+    formDataToSend.append('price', formData.price);
+    formDataToSend.append('marca_id', formData.marca_id);
+    formDataToSend.append('category_id', formData.category_id);
+    formDataToSend.append('detail', formData.detail);
 
     try {
-      const response = await fetch('http://localhost:8080/api/v1/producto/registrar', {
+      const response = await fetch('http://localhost:8080/api/products/create', {
         method: 'POST',
         body: formDataToSend
       });
@@ -72,19 +93,32 @@ export const AdminAddProductAcount = () => {
             <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
           </div>
           <div>
-            <label htmlFor="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" min="0" step="0.01" value={formData.precio} onChange={handleInputChange} required />
+            <label htmlFor="price">Precio:</label>
+            <input type="number" id="price" name="price" min="0" step="0.01" value={formData.price} onChange={handleInputChange} required />
           </div>
           <div>
             <label htmlFor="img">Imagen:</label>
             <input type="file" id="img" name="img" accept="image/*" onChange={(event) => setFormData({...formData, img: event.target.files[0]})} required />
           </div>
           <div>
-            <label htmlFor="marcaId">Marca:</label>
-            <select id="marcaId" name="marcaId" value={formData.marcaId} onChange={handleInputChange} required>
+            <label htmlFor="detail">Detalle:</label>
+            <input type="text" id="detail" name="detail" value={formData.detail} onChange={handleInputChange} required />
+          </div>
+          <div>
+            <label htmlFor="marca_id">Marca:</label>
+            <select id="marca_id" name="marca_id" value={formData.marca_id} onChange={handleInputChange} required>
               <option value="">Selecciona una marca</option>
               {brands.map((brand) => (
                 <option key={brand.id} value={brand.id}>{brand.name}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="category_id">Categoria:</label>
+            <select id="category_id" name="category_id" value={formData.category_id} onChange={handleInputChange} required>
+              <option value="">Selecciona una categoria</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>{category.name}</option>
               ))}
             </select>
           </div>

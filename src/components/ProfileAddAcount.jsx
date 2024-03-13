@@ -9,7 +9,6 @@ export const ProfileAddAcount = () => {
     num_cel: '',
     city_of_residence: '',
     address: '',
-    birthday_date:''
   });
 
   const handleInputChange = (event) => {
@@ -28,7 +27,6 @@ export const ProfileAddAcount = () => {
     formDataToSend.append('num_cel', formData.num_cel);
     formDataToSend.append('city_of_residence', formData.city_of_residence);
     formDataToSend.append('address', formData.address);
-    formDataToSend.append('birthday_data', formData.birthday_date);
 
     try {
       const response = await fetch('http://localhost:8080/api/infoUsers/registrar', {
@@ -58,12 +56,6 @@ export const ProfileAddAcount = () => {
               <label htmlFor="lastname"> segundo nombre:</label>
               <input
                 type="text" id="lastname" name="lastname" value={formData.lastname} onChange={handleInputChange} required 
-              />
-            </div>
-            <div>
-              <label htmlFor="birthday_date"> dia de cumpleaños:</label>
-              <input
-                type="date" id="birthday_date" name="birthday_date" value={formData.birthday_date} onChange={handleInputChange} required 
               />
             </div>
             <div>

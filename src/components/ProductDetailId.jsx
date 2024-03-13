@@ -16,7 +16,7 @@ export const ProductDetailId = () => {
 
     useEffect(() => {
         const searchDetailId = async () => {
-              const detailId = await fetch(`http://localhost:8080/api/v1/producto/${idToSearch}`);
+              const detailId = await fetch(`http://localhost:8080/api/products/${idToSearch}`);
               const data = await detailId.json(); 
               return data;
               

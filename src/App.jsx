@@ -13,6 +13,8 @@ import { Admin } from "./pages/Admin"
 import { AdminAddBranchAcount } from "./components/AdminAddBranchAcount"
 import { AdminAddProductAcount } from "./components/AdminAddProductAcount"
 import { ProductDetailId } from './components/ProductDetailId';
+import { AdminAddCategoryAcount } from "./components/AdminAddCategoryAcount"
+import { PrivateRoutesUser } from './routes/PrivateRoutesUser';
 
 
 
@@ -28,14 +30,17 @@ function App() {
         <Route path='/men' element={<Men/>} />
         <Route path='/women' element={<Women/>}/>
         <Route path='/child' element={<Child/>} />
-        <Route path="/profile" element={<Profile/>}  />
-        <Route path="/user-list" element={<UsersList/>}/>
-        <Route path="/admin" element={<Admin/>} />
-        <Route path="/admin/add-branch" element={<AdminAddBranchAcount/>} />
-        <Route path="/admin/add-product" element={<AdminAddProductAcount/>} />
-        <Route path="/profile/my-acount" element={<ProfileMyAcount/>}/>
-        <Route path="/profile/add-acount" element={<ProfileAddAcount/>}/>
-        <Route path="/profile/edit-acount" element={<ProfileEditAcount/>}/>
+        <Route element={<PrivateRoutesUser/>} >
+          <Route path="/profile" element={<Profile/>}  />
+          <Route path="/user-list" element={<UsersList/>}/>
+          <Route path="/profile/my-acount" element={<ProfileMyAcount/>}/>
+          <Route path="/profile/add-acount" element={<ProfileAddAcount/>}/>
+          <Route path="/profile/edit-acount" element={<ProfileEditAcount/>}/>
+        </Route>
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/admin/add-branch" element={<AdminAddBranchAcount/>} />
+          <Route path="/admin/add-product" element={<AdminAddProductAcount/>} />
+          <Route path="/admin/add-category" element={<AdminAddCategoryAcount/>} />
       </Routes>
     </BrowserRouter>
     </>

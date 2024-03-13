@@ -23,7 +23,7 @@ export const AdminAddBranchAcount = () => {
     formDataToSend.append('img', formData.img);
 
     try {
-      const response = await fetch('http://localhost:8080/api/v1/marca/guardar', {
+      const response = await fetch('http://localhost:8080/api/marcas/guardar', {
         method: 'POST',
         body: formDataToSend,
 

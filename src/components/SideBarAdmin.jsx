@@ -17,6 +17,7 @@ export const SideBarAdmin = () => {
     <div className="profile-links">
         <ul>
             <li><NavLink to="/admin/add-branch" >agregar marca</NavLink></li>
+            <li><NavLink to="/admin/add-category">agregar categoria</NavLink></li>
             <li><NavLink to="/admin/add-product">agregar producto</NavLink></li>
             <li><NavLink to="/" >volver</NavLink></li>
         </ul>

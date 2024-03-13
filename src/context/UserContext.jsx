@@ -22,8 +22,12 @@ export const UserProvider = ({children}) =>{
         setUser(dataUser)
         return dataUser
     }
+    const logout = () => {
+        localStorage.removeItem('user'); 
+        setUser(null); 
+    };
     return(
-        <UserContext.Provider value={{user,saveUser}}>
+        <UserContext.Provider value={{user,saveUser,logout}}>
             {children}
         </UserContext.Provider>
     )

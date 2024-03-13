@@ -19,7 +19,7 @@ export const Home = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/v1/producto/listar');
+      const response = await fetch('http://localhost:8080/api/products/all');
       if (response.ok) {
         const data = await response.json();
         // Convertir imágenes de bytes a URLs

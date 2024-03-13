@@ -11,14 +11,19 @@ import { UserContext } from '../context/UserContext'
 
 export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
 
-  const {user} = useContext(UserContext)
+  const {user,logout} = useContext(UserContext)
 
   const { isLoggedIn , setIsLoggedIn} = useAuth()
   
   const handleIsLoggedIn=()=>{
     setIsLoggedIn(!isLoggedIn)
-}
+  }
 
+  const loginOut = () =>{
+    handleIsLoggedIn()
+    logout()
+    
+  }
   const buttonSearch = ()=>{
     onSearch();
     scroll();
@@ -49,7 +54,7 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
                 {
                   user.user.role === 'ADMIN' ?<li><NavLink to="/admin" >Herramientas de administrador</NavLink></li> : null
                 }
-                <li><NavLink to="/" onClick={handleIsLoggedIn}>Cerrar sesión</NavLink></li>
+                <li><NavLink to="/" onClick={loginOut}>Cerrar sesión</NavLink></li>
               </ol>
             </div>
         </div>
