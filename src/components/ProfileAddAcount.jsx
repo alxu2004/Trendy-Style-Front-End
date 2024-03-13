@@ -6,6 +6,7 @@ export const ProfileAddAcount = () => {
 
   const {user} = useContext(UserContext)
 
+  console.log(user)
   const [formData, setFormData] = useState({
     lastname: '',
     cc: '',

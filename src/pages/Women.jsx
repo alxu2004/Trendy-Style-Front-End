@@ -16,7 +16,6 @@ export const Women = () => {
           const response = await fetch('http://localhost:8080/api/products/all');
           if (response.ok) {
             const data = await response.json();
-            // Convertir imágenes de bytes a URLs
             const productsWithImages = data.map(product => ({
               ...product,
               img: `data:image/jpeg;base64,${product.img}`

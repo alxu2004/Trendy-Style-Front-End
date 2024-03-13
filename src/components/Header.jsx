@@ -52,7 +52,7 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
                 <li><NavLink to="/profile">Perfil</NavLink></li>
                 <li><NavLink to="/user-list" >Lista de Usuarios</NavLink></li>
                 {
-                  user.user.role === 'ADMIN' ?<li><NavLink to="/admin" >Herramientas de administrador</NavLink></li> : null
+                  user?.user?.role === 'ADMIN' ?<li><NavLink to="/admin" >Herramientas de administrador</NavLink></li> : null
                 }
                 <li><NavLink to="/" onClick={loginOut}>Cerrar sesión</NavLink></li>
               </ol>
