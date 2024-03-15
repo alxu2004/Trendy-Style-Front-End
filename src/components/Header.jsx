@@ -14,6 +14,8 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
   const {user,logout} = useContext(UserContext)
 
   const { isLoggedIn , setIsLoggedIn} = useAuth()
+
+
   
   const handleIsLoggedIn=()=>{
     setIsLoggedIn(!isLoggedIn)
@@ -46,7 +48,7 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
         {
           isLoggedIn ?
           <div className="user-dropdown">
-            <span className="user-dropdown-btn">Usuario</span>
+            <span className="user-dropdown-btn">usuario</span>
             <div className="user-dropdown-content">
               <ol className='navUserList'>
                 <li><NavLink to="/profile">Perfil</NavLink></li>

@@ -16,10 +16,24 @@ export const SideBarAdmin = () => {
     </div>
     <div className="profile-links">
         <ul>
-            <li><NavLink to="/admin/add-branch" >agregar marca</NavLink></li>
-            <li><NavLink to="/admin/add-category">agregar categoria</NavLink></li>
-            <li><NavLink to="/admin/add-product">agregar producto</NavLink></li>
-            <li><NavLink to="/" >volver</NavLink></li>
+            <h1>Marcas</h1>
+            <ul>
+              <li><NavLink to="/admin/add-branch" >Crear Marca</NavLink></li>
+              <li><NavLink to="/admin/drop-branch" >Editar Marca</NavLink></li>
+            </ul>
+            <h1>Categoria</h1>
+            <ul>
+              <li><NavLink to="/admin/add-category">Crear Categoria</NavLink></li>
+              <li><NavLink to="/admin/drop-category" >Editar Marca</NavLink></li>
+            </ul>
+            <h1>Producto</h1>
+            <ul>
+              <li><NavLink to="/admin/add-product">Crear Producto</NavLink></li>
+              <li><NavLink to="/admin/drop-product" >Editar Marca</NavLink></li>
+            </ul>
+            
+         
+            <button><NavLink to="/" >volver</NavLink></button>
         </ul>
     </div>
 </aside>

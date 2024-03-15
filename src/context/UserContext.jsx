@@ -22,6 +22,8 @@ export const UserProvider = ({children}) =>{
         setUser(dataUser)
         return dataUser
     }
+    
+
     const logout = () => {
         localStorage.removeItem('user'); 
         setUser(null); 

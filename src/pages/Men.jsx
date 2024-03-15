@@ -31,10 +31,11 @@ export const Men = () => {
     
     console.log(productsMen);
     const menFilter = productsMen.filter((product) => product.category.name === "hombre")
-    
+    console.log(menFilter);
   return (
     <>
         <Header/>
+        
         <section className="products">
             {
                 menFilter.map((product) => {
@@ -43,6 +44,7 @@ export const Men = () => {
                     name={product.name}
                     img={product.img}
                     price={product.price}
+                    id={product.id}
                     />
                 })
             }

@@ -402,8 +402,6 @@
     width: 300px;
     padding: 20px;
     background-color: #f9f9f9;
-    border-radius: 5px;
-    border: 1px solid #ddd;
   }
   .profile-form h2 {
     margin-top: 0;
@@ -435,8 +433,7 @@
   /* Profile */
   .user-profile {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px;
+    grid-template-columns: 1fr 2fr; 
   }
   /* UserList */
   .backTable{
@@ -460,5 +457,3 @@
     padding: 5px 20px;
     
   }
-
-  

@@ -43,6 +43,7 @@ export const Women = () => {
                     name={product.name}
                     img={product.img}
                     price={product.price}
+                    id={product.id}
                     />
                 })
 

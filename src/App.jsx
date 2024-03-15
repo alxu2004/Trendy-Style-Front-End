@@ -15,6 +15,9 @@ import { AdminAddProductAcount } from "./components/AdminAddProductAcount"
 import { ProductDetailId } from './components/ProductDetailId';
 import { AdminAddCategoryAcount } from "./components/AdminAddCategoryAcount"
 import { PrivateRoutesUser } from './routes/PrivateRoutesUser';
+import { AdminDropBranchAcount } from "./components/AdminDropBranchAcount"
+import { AdminDropCategoryAcount } from "./components/AdminDropCategoryAcount"
+import { AdminDropProductAcount } from './components/AdminDropProductAcount';
 
 
 
@@ -41,6 +44,10 @@ function App() {
           <Route path="/admin/add-branch" element={<AdminAddBranchAcount/>} />
           <Route path="/admin/add-product" element={<AdminAddProductAcount/>} />
           <Route path="/admin/add-category" element={<AdminAddCategoryAcount/>} />
+          <Route path="/admin/drop-branch" element={<AdminDropBranchAcount/>} />
+          <Route path="/admin/drop-category" element={<AdminDropCategoryAcount/>} />
+          <Route path="/admin/drop-product" element={<AdminDropProductAcount/>} />
+
       </Routes>
     </BrowserRouter>
     </>
