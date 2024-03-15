@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { SideBarAdmin } from './SideBarAdmin';
+import { Card, CardContent, Button, Typography, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
 export const AdminAddProductAcount = () => {
   const [brands, setBrands] = useState([]);
-  const [categories , setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     price: '',
@@ -15,7 +16,7 @@ export const AdminAddProductAcount = () => {
 
   useEffect(() => {
     fetchBrands();
-    fetchCategory()
+    fetchCategories();
   }, []);
 
   const fetchBrands = async () => {
@@ -24,7 +25,6 @@ export const AdminAddProductAcount = () => {
       if (response.ok) {
         const data = await response.json();
         setBrands(data);
-        console.log(data)
       } else {
         console.error('Error fetching brands:', response.statusText);
       }
@@ -32,18 +32,18 @@ export const AdminAddProductAcount = () => {
       console.error('Error fetching brands:', error);
     }
   };
-  const fetchCategory = async () => {
+
+  const fetchCategories = async () => {
     try {
       const response = await fetch('http://localhost:8080/api/categories/all');
       if (response.ok) {
         const data = await response.json();
         setCategories(data);
-        console.log(data)
       } else {
-        console.error('Error fetching brands:', response.statusText);
+        console.error('Error fetching categories:', response.statusText);
       }
     } catch (error) {
-      console.error('Error fetching brands:', error);
+      console.error('Error fetching categories:', error);
     }
   };
 
@@ -55,10 +55,17 @@ export const AdminAddProductAcount = () => {
     });
   };
 
+  const handleFileChange = (event) => {
+    setFormData({
+      ...formData,
+      img: event.target.files[0]
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formDataToSend = new FormData();
-    formDataToSend.append('img', formData.img); 
+    formDataToSend.append('img', formData.img);
     formDataToSend.append('name', formData.name);
     formDataToSend.append('price', formData.price);
     formDataToSend.append('marca_id', formData.marca_id);
@@ -83,48 +90,85 @@ export const AdminAddProductAcount = () => {
   };
 
   return (
-    <div className="user-profile">
+    <>
       <SideBarAdmin />
-      <div className="profile-form">
-        <h2>Agregar Producto</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Nombre:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
-          </div>
-          <div>
-            <label htmlFor="price">Precio:</label>
-            <input type="number" id="price" name="price" min="0" step="0.01" value={formData.price} onChange={handleInputChange} required />
-          </div>
-          <div>
-            <label htmlFor="img">Imagen:</label>
-            <input type="file" id="img" name="img" accept="image/*" onChange={(event) => setFormData({...formData, img: event.target.files[0]})} required />
-          </div>
-          <div>
-            <label htmlFor="detail">Detalle:</label>
-            <input type="text" id="detail" name="detail" value={formData.detail} onChange={handleInputChange} required />
-          </div>
-          <div>
-            <label htmlFor="marca_id">Marca:</label>
-            <select id="marca_id" name="marca_id" value={formData.marca_id} onChange={handleInputChange} required>
-              <option value="">Selecciona una marca</option>
-              {brands.map((brand) => (
-                <option key={brand.id} value={brand.id}>{brand.name}</option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="category_id">Categoria:</label>
-            <select id="category_id" name="category_id" value={formData.category_id} onChange={handleInputChange} required>
-              <option value="">Selecciona una categoria</option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>{category.name}</option>
-              ))}
-            </select>
-          </div>
-          <button type="submit">Guardar</button>
-        </form>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <Card style={{ maxWidth: '400px', margin: 'auto' }}>
+          <CardContent>
+            <Typography variant="h5" gutterBottom>Agregar Producto</Typography>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
+              <TextField
+                label="Nombre"
+                variant="outlined"
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                style={{ marginBottom: '10px' }}
+                required
+              />
+              <TextField
+                label="Precio"
+                variant="outlined"
+                type="number"
+                name="price"
+                min="0"
+                step="0.01"
+                value={formData.price}
+                onChange={handleInputChange}
+                style={{ marginBottom: '10px' }}
+                required
+              />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                style={{ marginBottom: '10px' }}
+                required
+              />
+              <TextField
+                label="Detalle"
+                variant="outlined"
+                type="text"
+                name="detail"
+                value={formData.detail}
+                onChange={handleInputChange}
+                style={{ marginBottom: '10px' }}
+                required
+              />
+              <FormControl style={{ marginBottom: '10px' }}>
+                <InputLabel>Marca</InputLabel>
+                <Select
+                  value={formData.marca_id}
+                  onChange={handleInputChange}
+                  name="marca_id"
+                  required
+                >
+                  <MenuItem value="">Selecciona una marca</MenuItem>
+                  {brands.map((brand) => (
+                    <MenuItem key={brand.id} value={brand.id}>{brand.name}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl style={{ marginBottom: '10px' }}>
+                <InputLabel>Categoría</InputLabel>
+                <Select
+                  value={formData.category_id}
+                  onChange={handleInputChange}
+                  name="category_id"
+                  required
+                >
+                  <MenuItem value="">Selecciona una categoría</MenuItem>
+                  {categories.map((category) => (
+                    <MenuItem key={category.id} value={category.id}>{category.name}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <Button type="submit" variant="contained" color="primary">Guardar</Button>
+            </form>
+          </CardContent>
+        </Card>
       </div>
-    </div>
+    </>
   );
 };

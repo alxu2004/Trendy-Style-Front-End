@@ -53,9 +53,10 @@ export const AdminDropBranchAcount = () => {
 
   return (
     <>
-        <div className="user-profile">
+        
         <SideBarAdmin/>
-        <TableContainer component={Paper}>
+        <div className="user-profile">
+        <TableContainer component={Paper} >
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>

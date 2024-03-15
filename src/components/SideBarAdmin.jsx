@@ -1,41 +1,77 @@
-import { useContext } from "react"
-import { NavLink } from "react-router-dom"
-import { UserContext } from "../context/UserContext"
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListIcon from '@mui/icons-material/List';
+import ListItemText from '@mui/material/ListItemText';
+import { NavLink } from 'react-router-dom';
+import { UserContext } from './../context/UserContext';
 
 
 export const SideBarAdmin = () => {
 
-    const {user} = useContext(UserContext)
+    const {user} = React.useContext(UserContext)
+
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+
+
 
   return (
-    <aside className="sidebar-profile">
-    <div className="profile-info">
-        <h2>{user.user.name}</h2>
-        <p>{user.user.email}</p>
-        <p>{user.user.role}</p>
-    </div>
-    <div className="profile-links">
-        <ul>
-            <h1>Marcas</h1>
-            <ul>
-              <li><NavLink to="/admin/add-branch" >Crear Marca</NavLink></li>
-              <li><NavLink to="/admin/drop-branch" >Editar Marca</NavLink></li>
-            </ul>
-            <h1>Categoria</h1>
-            <ul>
-              <li><NavLink to="/admin/add-category">Crear Categoria</NavLink></li>
-              <li><NavLink to="/admin/drop-category" >Editar Marca</NavLink></li>
-            </ul>
-            <h1>Producto</h1>
-            <ul>
-              <li><NavLink to="/admin/add-product">Crear Producto</NavLink></li>
-              <li><NavLink to="/admin/drop-product" >Editar Marca</NavLink></li>
-            </ul>
-            
-         
-            <button><NavLink to="/" >volver</NavLink></button>
-        </ul>
-    </div>
-</aside>
-  )
+    <>
+      <Button onClick={toggleDrawer(true)} sx={{ marginLeft: 2 }}><ListIcon sx={{ fontSize: 50 }}/></Button>
+      <Drawer open={open} onClose={toggleDrawer(false)}>
+        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+          <List>
+            <ListItemText primary={user.user.name} style={{ fontSize: '2rem', margin: '1rem' }} />
+            <ListItem disablePadding >
+              <ListItemButton component={NavLink} to="/admin/add-branch">
+                <ListItemText primary="Crear Marca" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding >
+              <ListItemButton component={NavLink} to="/admin/drop-branch">
+                <ListItemText primary="Editar Marca" />
+              </ListItemButton>
+            </ListItem>
+            <Divider/>
+            <ListItem disablePadding >
+              <ListItemButton component={NavLink} to="/admin/add-category">
+                <ListItemText primary="Crear Categoria" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding >
+              <ListItemButton component={NavLink} to="/admin/drop-category">
+                <ListItemText primary="Editar Categoria" />
+              </ListItemButton>
+            </ListItem>
+            <Divider/>
+            <ListItem disablePadding >
+              <ListItemButton component={NavLink} to="/admin/add-product">
+                <ListItemText primary="Crear Producto" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding >
+              <ListItemButton component={NavLink} to="/admin/drop-product">
+                <ListItemText primary="Editar Producto" />
+              </ListItemButton>
+            </ListItem>
+            <Divider/>
+            <ListItem disablePadding >
+              <ListItemButton component={NavLink} to="/">
+                <ListItemText primary="volver" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
+    </>
+  );
 }

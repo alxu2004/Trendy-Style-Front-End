@@ -432,8 +432,8 @@
   }
   /* Profile */
   .user-profile {
-    display: grid;
-    grid-template-columns: 1fr 2fr; 
+    margin: 0 auto;
+    max-width: 80%;
   }
   /* UserList */
   .backTable{

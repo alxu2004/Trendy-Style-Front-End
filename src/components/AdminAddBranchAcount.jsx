@@ -1,5 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { SideBarAdmin } from './SideBarAdmin';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { TextField } from '@mui/material';
 
 export const AdminAddBranchAcount = () => {
   const [formData, setFormData] = useState({
@@ -46,33 +51,50 @@ export const AdminAddBranchAcount = () => {
       alert('Hubo un error al agregar la marca');
     }
   };
-
+  const inputFileRef = React.useRef(null);
+  const handleButtonClick = () => {
+    inputFileRef.current.click();
+  };
   return (
-    <div className="user-profile">
+    <>
+      
       <SideBarAdmin />
-      <div className="profile-form">
-        <h2>Agregar marca</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Nombre:</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="img">Imagen:</label>
-            <input
-              type="file"
-              name="img"
-              onChange={handleInputChange}
-            />
-          </div>
-          <button type="submit">Guardar</button>
-        </form>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <Card >
+      <CardContent>
+        <Typography style={{fontSize: 25, textAlign: 'center'}} color="text.secondary" gutterBottom>
+          Crear Marca
+        </Typography>
+        <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignContent:'center' , alignItems:'center'}}>
+        <div style={{ marginBottom: '20px' }}>
+        <TextField
+          label="Marca"
+          variant="outlined"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          sx={{ height: '60px' }}
+        />
       </div>
+      <div style={{ marginBottom: '20px' }}>
+        <Button onClick={handleButtonClick} variant="contained" component="label">
+          Subir imagen
+          <input
+            type="file"
+            name="img"
+            onChange={handleInputChange}
+            accept="image/*"
+            style={{ display: 'none' }}
+            ref={inputFileRef}
+          />
+        </Button>
+      </div>
+      <Button type="submit" variant="contained" color="primary">Crear</Button>
+    </form>
+      </CardContent>
+    </Card>
     </div>
+    </>
   );
 };
