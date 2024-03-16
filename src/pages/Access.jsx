@@ -5,8 +5,17 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from './../hooks/useAuth';
 import { UserContext } from "../context/UserContext";
+import Swal from "sweetalert2";
 
 export const Access = () => {
+    
+      const showAlertError = () => {
+        Swal.fire({
+          icon: 'error',
+          title: '¡Ups, Algo paso!',
+          text: 'su correo o contraseña no coinsiden',
+        });
+      };
 
     const {saveUser} = useContext(UserContext);
 
@@ -42,8 +51,7 @@ export const Access = () => {
         })
         .then(response => {
             if (!response.ok) {
-                // TODO: Change the alert for good handle of aplication
-                alert('Error en el inicio de sesión');
+                showAlertError()
                 throw new Error('Network response was not ok');
             } else {
                 navigate('/');
@@ -54,12 +62,9 @@ export const Access = () => {
         })
         .then(dataUser => {
             saveUser(dataUser);
-            console.log(dataUser);
-            console.log(dataUser.user.name)
         })
         .catch(error => {
             console.error('Fetch error:', error);
-            alert('Error en el inicio de sesión');
         });
     };
     

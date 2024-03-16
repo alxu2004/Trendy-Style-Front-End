@@ -14,12 +14,26 @@ import CreateIcon from '@mui/icons-material/Create';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { TextField } from "@mui/material";
+import Swal from "sweetalert2";
 
 export const AdminDropBranchAcount = () => {
     const [branches, setBranches] = useState([]);
     const [open, setOpen] = useState(false);
     const [selectedBranchId, setSelectedBranchId] = useState(null);
-
+    const showAlertDelete = () => {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Eliminado!',
+          text: 'Su marca se ha eliminado satisfactoriamente',
+        });
+      };
+      const showAlertUpdate = () => {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Actualizado!',
+          text: 'Su marca se ha actualizado satisfactoriamente',
+        });
+      };
     useEffect(() => {
         ListBranches();
     }, []);
@@ -56,7 +70,7 @@ export const AdminDropBranchAcount = () => {
             if (!response.ok) {
                 throw new Error('error al eliminar');
             }
-            alert('marca eliminada');
+            showAlertDelete()
             ListBranches(); // Actualiza la lista después de eliminar
         } catch (error) {
             console.error('Error:', error);
@@ -79,7 +93,7 @@ export const AdminDropBranchAcount = () => {
                 throw new Error('Error al actualizar la marca');
             }
 
-            alert('Marca actualizada correctamente');
+            showAlertUpdate()
             handleClose(); // Cierra el modal después de actualizar
             ListBranches(); // Actualiza la lista después de editar
         } catch (error) {

@@ -14,6 +14,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { TextField } from "@mui/material";
+import Swal from "sweetalert2";
 
 export const AdminDropCategoryAcount = () => {
     const [formData, setFormData] = useState({
@@ -22,6 +23,20 @@ export const AdminDropCategoryAcount = () => {
     const [categories, setCategories] = useState([]);
     const [open, setOpen] = useState(false);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+    const showAlertDelete = () => {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Eliminado!',
+          text: 'Su categoria se ha eliminado satisfactoriamente',
+        });
+      };
+      const showAlertUpdate = () => {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Actualizado!',
+          text: 'Su categoria se ha actualizado satisfactoriamente',
+        });
+      };
 
     useEffect(() => {
         ListCategories();
@@ -59,7 +74,7 @@ export const AdminDropCategoryAcount = () => {
             if (!response.ok) {
                 throw new Error('error al eliminar')
             }
-            alert('Categoria eliminada')
+            showAlertDelete()
             ListCategories(); // Actualiza la lista después de eliminar
         } catch (error) {
             console.error('Error:', error);
@@ -82,7 +97,7 @@ export const AdminDropCategoryAcount = () => {
                 throw new Error('Error al actualizar la categoría');
             }
 
-            alert('Categoría actualizada correctamente');
+            showAlertUpdate()
 
             setFormData({
                 name: ''

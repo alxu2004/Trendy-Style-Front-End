@@ -5,13 +5,20 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { TextField } from '@mui/material';
+import Swal from 'sweetalert2';
 
 export const AdminAddBranchAcount = () => {
   const [formData, setFormData] = useState({
     name: '',
     img: null,
   });
-
+  const showAlert = () => {
+    Swal.fire({
+      icon: 'success',
+      title: '¡Creado!',
+      text: 'Su marca se creo satisfactoriamente',
+    });
+  };
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
     setFormData(prevState => ({
@@ -38,7 +45,7 @@ export const AdminAddBranchAcount = () => {
         throw new Error('Error al agregar la marca');
       }
       
-      alert('Marca agregada correctamente');
+      showAlert()
 
      
       setFormData({

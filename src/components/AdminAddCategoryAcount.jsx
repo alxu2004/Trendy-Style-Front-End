@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SideBarAdmin } from './SideBarAdmin';
 import { Card, CardContent, Button, Typography, TextField } from '@mui/material';
+import Swal from "sweetalert2";
 
 export const AdminAddCategoryAcount = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,13 @@ export const AdminAddCategoryAcount = () => {
       [name]: value
     }));
   };
-
+  const showAlert = () => {
+    Swal.fire({
+      icon: 'success',
+      title: '¡Creado!',
+      text: 'Su categoria se creo satisfactoriamente',
+    });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,8 +37,8 @@ export const AdminAddCategoryAcount = () => {
       if (!response.ok) {
         throw new Error('Error al agregar la categoria');
       }
+      showAlert()
       
-      alert('Categoria agregada correctamente');
 
       setFormData({
         name: ''

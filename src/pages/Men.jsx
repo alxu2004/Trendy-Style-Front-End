@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import { Header } from "../components/Header";
 import { ShoesCard } from "../components/ShoesCard";
+import { Box, Grid } from "@mui/material";
 
 
 export const Men = () => {
@@ -30,25 +31,27 @@ export const Men = () => {
       };
     
     console.log(productsMen);
-    const menFilter = productsMen.filter((product) => product.category.name === "hombre")
+    const menFilter = productsMen.filter((product) => product.category.name === "Hombre" && "hombre")
     console.log(menFilter);
   return (
     <>
         <Header/>
-        
-        <section className="products">
-            {
-                menFilter.map((product) => {
-                    return <ShoesCard
-                    key={product.id}
-                    name={product.name}
-                    img={product.img}
-                    price={product.price}
-                    id={product.id}
-                    />
-                })
-            }
-        </section>
+        <Box sx={{ flexGrow: 0 }} style={{padding:'20px'}} >
+        <Grid container spacing={{ xs: 1, md: 1 }} columns={{ xs: 1, sm: 10, md: 16 }}>
+        {menFilter.map((product, index) => (
+          <Grid xs={1} sm={4} md={4} key={index}>
+            <ShoesCard
+                key={product.id}
+                name={product.name}
+                img={product.img}
+                price={product.price}
+                detail={product.detail}
+                id={product.id}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
     </>
   )
 }

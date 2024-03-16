@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SideBarAdmin } from './SideBarAdmin';
 import { Card, CardContent, Button, Typography, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import Swal from 'sweetalert2';
 
 export const AdminAddProductAcount = () => {
   const [brands, setBrands] = useState([]);
@@ -54,7 +55,13 @@ export const AdminAddProductAcount = () => {
       [name]: value
     });
   };
-
+  const showAlert = () => {
+    Swal.fire({
+      icon: 'success',
+      title: '¡Creado!',
+      text: 'Su producto se creo satisfactoriamente',
+    });
+  };
   const handleFileChange = (event) => {
     setFormData({
       ...formData,
@@ -78,8 +85,8 @@ export const AdminAddProductAcount = () => {
         body: formDataToSend
       });
       if (response.ok) {
-        alert('Producto agregado exitosamente');
-        console.log('Producto agregado exitosamente');
+        showAlert()
+
       } else {
         alert('Error al agregar producto:');
         console.error('Error al agregar producto:', response.statusText);

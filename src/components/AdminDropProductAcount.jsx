@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Stack from '@mui/material/Stack';
 import CreateIcon from '@mui/icons-material/Create';
 import { Modal, Box, TextField, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import Swal from "sweetalert2";
 
 export const AdminDropProductAcount = () => {
     const [products, setProducts] = useState([]);
@@ -27,6 +28,20 @@ export const AdminDropProductAcount = () => {
       category_id: ''
     });
     const [editingProductId, setEditingProductId] = useState(null);
+    const showAlertDelete = () => {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Eliminado!',
+        text: 'Su producto se ha eliminado satisfactoriamente',
+      });
+    };
+    const showAlertUpdate = () => {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Actualizado!',
+        text: 'Su producto se ha actualizado satisfactoriamente',
+      });
+    };
   
     useEffect(() => {
       fetchBrands();
@@ -105,7 +120,7 @@ export const AdminDropProductAcount = () => {
             if(!response.ok){
                 throw new Error('error al eliminar');
             }
-            alert('producto eliminada');
+            showAlertDelete()
         }catch(error){
             console.error('Error:', error);
         }
@@ -144,9 +159,8 @@ export const AdminDropProductAcount = () => {
             body: formDataToSend
           });
           if (response.ok) {
-            alert('Producto actualizado exitosamente');
-            console.log('Producto actualizado exitosamente');
-            handleCloseModal(); // Cerrar el modal después de enviar la actualización
+            showAlertUpdate()
+            handleCloseModal(); 
           } else {
             alert('Error al actualizar producto:');
             console.error('Error al actualizar producto:', response.statusText);
