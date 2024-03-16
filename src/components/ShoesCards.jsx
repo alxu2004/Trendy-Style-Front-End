@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import { ShoesCard } from "./ShoesCard";
 import '../assets/Styles.css';
 import PropTypes from 'prop-types';
-import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 
 
@@ -35,28 +33,21 @@ export const ShoesCards = ({ searchResults, section }) => {
     };
 
     const productsToDisplay = searchResults.length > 0 ? searchResults : products;
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-      }));
+
     return (
 
-        <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 2, md: 1 }} columns={{ xs: 4, sm: 10, md: 20 }} ref={section}>
+        <Box sx={{ flexGrow: 0 }} style={{padding:'20px'}} >
+        <Grid container spacing={{ xs: 1, md: 1.5 }} columns={{ xs: 1, sm: 10, md: 16 }} ref={section}>
         {productsToDisplay.map((product, index) => (
           <Grid xs={1} sm={4} md={4} key={index}>
-            <Item>
             <ShoesCard
                 key={product.id}
                 name={product.name}
                 img={product.img}
                 price={product.price}
+                detail={product.detail}
                 id={product.id}
-                    />
-            </Item>
+            />
           </Grid>
         ))}
       </Grid>
