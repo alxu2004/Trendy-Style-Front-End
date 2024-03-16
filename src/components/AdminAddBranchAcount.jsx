@@ -80,14 +80,7 @@ export const AdminAddBranchAcount = () => {
       <div style={{ marginBottom: '20px' }}>
         <Button onClick={handleButtonClick} variant="contained" component="label">
           Subir imagen
-          <input
-            type="file"
-            name="img"
-            onChange={handleInputChange}
-            accept="image/*"
-            style={{ display: 'none' }}
-            ref={inputFileRef}
-          />
+          
         </Button>
       </div>
       <Button type="submit" variant="contained" color="primary">Crear</Button>
@@ -95,6 +88,14 @@ export const AdminAddBranchAcount = () => {
       </CardContent>
     </Card>
     </div>
+    <input
+            type="file"
+            name="img"
+            onChange={handleInputChange}
+            accept="image/*"
+            style={{ display: 'none' }}
+            ref={inputFileRef}
+          />
     </>
   );
 };

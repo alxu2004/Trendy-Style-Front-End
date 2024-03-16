@@ -1,32 +1,47 @@
-import { SideBarProfile } from "./SideBarProfile"
 
+import { SideBarProfile } from "./SideBarProfile";
+import { TextField, Button, Typography } from '@mui/material';
 
 export const ProfileEditAcount = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className="user-profile">
-        <SideBarProfile/>
-        <div className="profile-form">
-      <h2>Edit Profile</h2>
-      <form >
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-          />
+    <>
+      <SideBarProfile/>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ marginLeft: '20px' }}>
+          <Typography variant="h2">Edit Profile</Typography>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="name">Name:</label>
+              <TextField
+                type="text"
+                id="name"
+                name="name"
+                variant="outlined"
+                fullWidth
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <TextField
+                type="email"
+                id="email"
+                name="email"
+                variant="outlined"
+                fullWidth
+                required
+              />
+            </div>
+            <Button type="submit" variant="contained" color="primary">
+              Save
+            </Button>
+          </form>
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-          />
-        </div>
-        <button type="submit">Save</button>
-      </form>
-    </div>
-    </div>  
-    )
-}
+      </div>
+    </>
+  );
+};

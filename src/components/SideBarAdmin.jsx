@@ -14,7 +14,7 @@ import { UserContext } from './../context/UserContext';
 
 export const SideBarAdmin = () => {
 
-    const {user} = React.useContext(UserContext)
+  const {user} = React.useContext(UserContext)
 
   const [open, setOpen] = React.useState(false);
 
