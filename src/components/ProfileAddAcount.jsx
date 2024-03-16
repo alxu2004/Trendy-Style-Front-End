@@ -50,8 +50,8 @@ export const ProfileAddAcount = () => {
     <>
       <SideBarProfile />
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div style={{ marginLeft: '20px' }}>
-          <Typography variant="h3">Edit Profile</Typography>
+        <div style={{ marginLeft: '20px', border:"2px solid black" , padding: "30px" , borderRadius: "20px" }}>
+          <Typography variant="h4" style={{textAlign:"center"}} >Edit Profile</Typography>
           <form onSubmit={handleSubmit}>
             <div>
               <TextField
