@@ -71,8 +71,10 @@ export const Access = () => {
     const [registerFormData, setRegisterFormData] = useState({
         name: '',
         email: '',
-        password: ''
-        // password2: ''
+        password: '',
+        address: '',
+        city:'',
+        num_cel: ''
     });
     const handleRegisterChange = (e) => {
         const { name, value } = e.target;
@@ -99,8 +101,10 @@ export const Access = () => {
                 setRegisterFormData({
                     name: '',
                     email: '',
-                    password: ''
-                    // password2: ''
+                    password: '',
+                    address: '',
+                    city:'',
+                    num_cel: ''
                 });
             }
         })
@@ -162,11 +166,21 @@ export const Access = () => {
                             placeholder="contraseña" required 
                             minLength={4}
                             />
-                    {/* <input type="password"
-                            name="password2"
-                            value={registerFormData.password2}
+                    <input type="text"
+                            name="address"
+                            value={registerFormData.address}
                             onChange={handleRegisterChange}
-                            placeholder="confirmar contraseña" required/> */}
+                            placeholder="Direccion" required/> 
+                    <input type="text"
+                            name="city"
+                            value={registerFormData.city}
+                            onChange={handleRegisterChange}
+                            placeholder="Ciudad" required/> 
+                    <input type="text"
+                            name="num_cel"
+                            value={registerFormData.num_cel}
+                            onChange={handleRegisterChange}
+                            placeholder="Celular" required/> 
                     <button type="submit">registrarse</button>
 
                 </form>
