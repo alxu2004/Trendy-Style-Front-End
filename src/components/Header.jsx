@@ -54,17 +54,17 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
     onSearch();
     scroll();
   }
+
   return (
 
     <AppBar position="static" color="" >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit' }} > <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /></NavLink>
-          <Typography
+           <AdbIcon component={NavLink} to="/" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} style={{ color: 'inherit' }} />
+          <Typography 
             variant="h6"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component={NavLink} to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -140,26 +140,23 @@ export const Header = ({ searchTerm, onSearchChange, onSearch,scroll }) => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             
               <Button 
-                variant='outlined' 
                 component={NavLink} to="/men"
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: 'block' , marginRight: '10px'}}
+                sx={{ my: 2, display: 'block' , marginRight: '10px', textAlign:'center',color:'black'}}
               >
                 Hombre
               </Button>
               <Button 
-                variant='outlined'
                 component={NavLink} to="/women"
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: 'block' , marginRight: '10px'}}
+                sx={{ my: 2, display: 'block' , marginRight: '10px', textAlign:'center',color:'black'}}
               >
                 Mujer
               </Button>
               <Button 
-                variant='outlined'
                 component={NavLink} to="/child"
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: 'block' , marginRight: '10px'}}
+                sx={{ my: 2, display: 'block' , marginRight: '10px', textAlign:'center',color:'black'}}
               >
                 Niño
               </Button>

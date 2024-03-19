@@ -16,12 +16,14 @@ export const ProductDetailId = () => {
     const location = useLocation();
     const [idToSearch, setIdToSearch] = useState('')
     const [productDetail, setProductDetail] = useState({})
-
+    
     useEffect(() => {
         if(location) {
             let idUrl = location.pathname.slice(location.pathname.lastIndexOf("/") , location.pathname.length) ;
             setIdToSearch(idUrl.replace("/", ""))
-        }
+        } 
+
+        
     }, [location])
 
     useEffect(() => {
@@ -55,35 +57,33 @@ export const ProductDetailId = () => {
             <img style={{width: "90vh"}} src={`data: image/jpeg;base64,${productDetail.img} `} alt="" />
           </Item>
         </Grid>
-      <Grid xs={6} md={5}>
-        <Item >
-        <Card variant="outlined" sx={{ maxWidth: 600,padding: 2, height: "90vh"}} >
-        <Box sx={{ p: 10  }}>
-          <Stack direction="row" justifyContent="space-between" alignItems="center" marginBottom={2}>
-            <Typography gutterBottom variant="h2" component="div">
-              {productDetail.name}
-            </Typography>
-          </Stack>
-          <Typography color="text.primary" variant="h5" textAlign={"justify"} marginBottom={2}>
-            {productDetail.detail}
-          </Typography>
-        </Box>
-      <Divider />
-        <Box sx={{ p: 2 }}>
-          <Typography gutterBottom variant="body2">
-            <Stack direction="row" spacing={2} justifyContent={"space-around"} marginBottom={2} marginTop={2}>
-              <Button variant="contained" color="success">
-                Comprar
-              </Button>
-              <Typography gutterBottom variant="h4" component="div">
-              ${productDetail.price}
-            </Typography>
+        <Grid xs={6} md={5}>
+          <Card variant="outlined" sx={{ maxWidth: 600,padding: 2, height: "91.5vh"}} >
+          <Box sx={{ py: 5 , px: 4  }}>
+            <Stack direction="row" justifyContent="center" alignItems="center" marginBottom={2}>
+              <Typography gutterBottom variant="h3" component="div"  >
+                {productDetail.name}
+              </Typography>
             </Stack>
-          </Typography>
-        </Box>
-        </Card>
-        </Item>
-      </Grid>
+            <Typography color="text.primary" variant="h6"  textAlign={"justify"} marginBottom={2}>
+              {productDetail.detail}
+            </Typography>
+          </Box>
+        <Divider />
+          <Box sx={{ p: 2 }}>
+            <Typography gutterBottom variant="body2">
+              <Stack direction="row" spacing={2} justifyContent={"space-around"} marginBottom={2} marginTop={2}>
+                <Button variant="contained" color="success">
+                  Comprar
+                </Button>
+                <Typography gutterBottom variant="h4" component="div">
+                ${productDetail.price}
+              </Typography>
+              </Stack>
+            </Typography>
+          </Box>
+          </Card>
+        </Grid>
       </Grid>
     </Box>
   )

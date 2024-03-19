@@ -46,6 +46,8 @@ export const ShoesCards = ({ searchResults, section }) => {
                 img={product.img}
                 price={product.price}
                 detail={product.detail}
+                marca={product.marca.name}
+                category={product.category.name}
                 id={product.id}
             />
           </Grid>

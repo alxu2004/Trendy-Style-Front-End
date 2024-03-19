@@ -31,6 +31,7 @@ export const SideBarAdmin = () => {
         <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
           <List>
             <ListItemText primary={user.user.name} style={{ fontSize: '2rem', margin: '1rem' }} />
+            <Divider/>
             <ListItem disablePadding >
               <ListItemButton component={NavLink} to="/admin/add-branch">
                 <ListItemText primary="Crear Marca" />

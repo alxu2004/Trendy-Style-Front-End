@@ -14,22 +14,22 @@ const images = [
   {
     label: 'San Francisco – Oakland Bay Bridge, United States',
     imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://i.pinimg.com/originals/31/9f/d1/319fd140755a84a7cd287b3473ff4561.jpg',
   },
   {
     label: 'Bird',
     imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://i.pinimg.com/originals/e3/24/90/e324906d9c8a3b0439753b2fc958f83c.jpg',
   },
   {
     label: 'Bali, Indonesia',
     imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+      'https://img.zcool.cn/community/0179c05d846e1fa801211d530524d0.png@2o.png',
   },
   {
     label: 'Goč, Serbia',
     imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://realsportantofagasta.cl/wp-content/uploads/2020/05/NIKE_BANNER_.png',
   },
 ];
 

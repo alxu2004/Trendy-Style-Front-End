@@ -28,6 +28,7 @@ export const SideBarProfile = () => {
         <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
           <List>
             <ListItemText primary={user.user.name} style={{ fontSize: '2rem', margin: '1rem' }} />
+            <Divider/>
             <ListItem disablePadding >
               <ListItemButton component={NavLink} to="/profile/my-acount">
                 <ListItemText primary="Mi Cuenta" />
@@ -39,13 +40,8 @@ export const SideBarProfile = () => {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding >
-              <ListItemButton component={NavLink} to="/profile/edit-Acount">
-                <ListItemText primary="Editar Contraseña" />
-              </ListItemButton>
             </ListItem>
             <Divider/>
-            
-            
             <ListItem disablePadding >
               <ListItemButton component={NavLink} to="/">
                 <ListItemText primary="volver" />

@@ -5,7 +5,6 @@ import { Men } from "./pages/Men"
 import { Women } from "./pages/Women"
 import { Child } from "./pages/Child"
 import { Profile } from "./pages/Profile"
-import { ProfileEditAcount } from "./components/ProfileEditAcount"
 import { ProfileMyAcount } from './components/ProfileMyAcount';
 import { ProfileAddAcount } from './components/ProfileAddAcount';
 import { UsersList } from "./components/UsersList"
@@ -38,7 +37,6 @@ function App() {
           <Route path="/user-list" element={<UsersList/>}/>
           <Route path="/profile/my-acount" element={<ProfileMyAcount/>}/>
           <Route path="/profile/add-acount" element={<ProfileAddAcount/>}/>
-          <Route path="/profile/edit-acount" element={<ProfileEditAcount/>}/>
         </Route>
           <Route path="/admin" element={<Admin/>} />
           <Route path="/admin/add-branch" element={<AdminAddBranchAcount/>} />
