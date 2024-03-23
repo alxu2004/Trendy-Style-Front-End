@@ -1,23 +1,29 @@
 # 💻 TrendyStyle React + Vite 💻
 
 ## Descripcion del proyecto
+
 TrendyStyle es un ecommerce de zapatos que busca traer el mejor estilo al mercado, nuestro proposito es brindar productos con la mejor calidad del mercado a nuestros clientes, brindar la mejor calidad de servicio posible para generar una mejor comodidad y confiabilidad a la hora de comprar nuestros productos.
 
-## Instrucciones para la instalación y utilización del proyecto 
+## Instrucciones para la instalación y utilización del proyecto
+
 ### Programas necesarios
+
 - Instalar node.js
 - Instalar algun entorno de desarrollo para ejecutar la parte del front (Visual Studio Code) Recomendado.
+
 ### Utilizacion del proyecto
+
 1. Crear una carpeta y abrir el git Bash en la carpeta.
 2. Dentro de la carpeta realizamos git init para inicializar el repositrio.
-3.Usar el comando git remote add origin y el link del repositorio que deseas clonar.
-4. Usar el comando git clone y el link del repositorio que deseas clonar.
-5. Luego en la misma terminar ejecutas code . para abrir directamente el proyecto en visual studio code
-6. verificar que todas las dependencias esten instaladas para ejecutar correctamente el proyecto.
-7. si no lo estan debes abrir una terminal y ejecutar el comando npm i para instalarlas
-8. para poder abrir la vista del proyecto necesitamos abrir una terminal y ejecutar el comando: npm run dev
-    
+   3.Usar el comando git remote add origin y el link del repositorio que deseas clonar.
+3. Usar el comando git clone y el link del repositorio que deseas clonar.
+4. Luego en la misma terminar ejecutas code . para abrir directamente el proyecto en visual studio code
+5. verificar que todas las dependencias esten instaladas para ejecutar correctamente el proyecto.
+6. si no lo estan debes abrir una terminal y ejecutar el comando npm i para instalarlas
+7. para poder abrir la vista del proyecto necesitamos abrir una terminal y ejecutar el comando: npm run dev
+
 ## Estructura del proyecto
+
 ### Explicación de los directorios y archivos principales:
 
 **public/:** Contiene archivos estáticos como HTML, imágenes, iconos, etc. El archivo index.html es el punto de entrada principal de la aplicación.
@@ -35,18 +41,23 @@ TrendyStyle es un ecommerce de zapatos que busca traer el mejor estilo al mercad
 ## Uso del proyecto
 
 ## Estado del proyecto
+
 El proyecto actualmete se encuentra en desarrollo
 
 ## Contactanos
 
 ## 🔥 Cesar Ramirez 🔥
+
 Cesaralejandroramirezzuluaga@gmail.com
+
 ## 🔥 Andrey Campiño 🔥
+
 agudelo.2004.andrey@gmail.com
+
 ## 🔥 Camilo Gaibao 🔥
+
 gaibaoandres84@gmail.com
+
 ## 🔥 Esneider Mejia 🔥
+
 esneidermejiaq@gmail.com
-
-
-

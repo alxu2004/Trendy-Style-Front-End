@@ -1,13 +1,9 @@
-
-import { ProfileMyAcount } from "../components/ProfileMyAcount"
-
-
-
+import { ProfileMyAcount } from '../components/ProfileMyAcount'
 
 export const Profile = () => {
   return (
-    <div className="user-profile">
-      <ProfileMyAcount/>
+    <div className='user-profile'>
+      <ProfileMyAcount />
     </div>
   )
 }

@@ -1,37 +1,34 @@
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react'
 
-export const UserContext = createContext();
+export const UserContext = createContext()
 
-export const UserProvider = ({children}) =>{
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'))
+    return storedUser || null
+  })
 
-    const [user, setUser] = useState(() => {
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        return storedUser || null;
-    });
-
-    useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser) {
-            setUser(storedUser);
-        }
-    }, []);
-
-    const saveUser = (dataUser) =>{
-        localStorage.setItem('user', JSON.stringify(dataUser));
-        setUser(dataUser)
-        return dataUser
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'))
+    if (storedUser) {
+      setUser(storedUser)
     }
-    
+  }, [])
 
-    const logout = () => {
-        localStorage.removeItem('user'); 
-        setUser(null); 
-    };
-    return(
-        <UserContext.Provider value={{user,saveUser,logout}}>
-            {children}
-        </UserContext.Provider>
-    )
+  const saveUser = (dataUser) => {
+    localStorage.setItem('user', JSON.stringify(dataUser))
+    setUser(dataUser)
+    return dataUser
+  }
 
+  const logout = () => {
+    localStorage.removeItem('user')
+    setUser(null)
+  }
+  return (
+    <UserContext.Provider value={{ user, saveUser, logout }}>
+      {children}
+    </UserContext.Provider>
+  )
 }

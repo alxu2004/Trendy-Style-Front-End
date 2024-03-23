@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
+import * as React from 'react'
+import { useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box'
+import MobileStepper from '@mui/material/MobileStepper'
+import Button from '@mui/material/Button'
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft'
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight'
+import SwipeableViews from 'react-swipeable-views'
+import { autoPlay } from 'react-swipeable-views-utils'
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 const images = [
   {
@@ -31,29 +31,38 @@ const images = [
     imgPath:
       'https://realsportantofagasta.cl/wp-content/uploads/2020/05/NIKE_BANNER_.png',
   },
-];
+]
 
-export const Ad =()=> {
-  const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
+export const Ad = () => {
+  const theme = useTheme()
+  const [activeStep, setActiveStep] = React.useState(0)
+  const maxSteps = images.length
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
+  }
 
   const handleStepChange = (step) => {
-    setActiveStep(step);
-  };
+    setActiveStep(step)
+  }
 
   return (
-    <Box sx={{  flexGrow: 1 }} style={{display:'flex' ,flexDirection: 'column', alignItems: 'center',justifyContent:'center', justifyItems:'center', alignContent:'center' }} >
-      
-      <AutoPlaySwipeableViews  
+    <Box
+      sx={{ flexGrow: 1 }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        justifyItems: 'center',
+        alignContent: 'center',
+      }}
+    >
+      <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
@@ -62,8 +71,8 @@ export const Ad =()=> {
         {images.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <Box 
-                component="img"
+              <Box
+                component='img'
                 sx={{
                   height: 340,
                   display: 'block',
@@ -77,17 +86,23 @@ export const Ad =()=> {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper style={{display: 'flex' , alignContent:'center' ,alignItems: 'center', justifyContent:'center', justifyItems:'center'}}
+      <MobileStepper
+        style={{
+          display: 'flex',
+          alignContent: 'center',
+          alignItems: 'center',
+          justifyContent: 'center',
+          justifyItems: 'center',
+        }}
         steps={maxSteps}
-        position="static"
+        position='static'
         activeStep={activeStep}
         nextButton={
           <Button
-            size="small"
+            size='small'
             onClick={handleNext}
             disabled={activeStep === maxSteps - 1}
           >
-            
             {theme.direction === 'rtl' ? (
               <KeyboardArrowLeft />
             ) : (
@@ -96,17 +111,15 @@ export const Ad =()=> {
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button size='small' onClick={handleBack} disabled={activeStep === 0}>
             {theme.direction === 'rtl' ? (
               <KeyboardArrowRight />
             ) : (
               <KeyboardArrowLeft />
             )}
-          
           </Button>
         }
       />
     </Box>
-  );
+  )
 }
-

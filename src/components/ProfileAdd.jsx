@@ -1,7 +1,3 @@
-
-
 export const ProfileAdd = () => {
-  return (
-    <div>ProfileAdd</div>
-  )
+  return <div>ProfileAdd</div>
 }
