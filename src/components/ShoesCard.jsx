@@ -6,18 +6,64 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { Divider } from '@mui/material'
+import { ButtonGroup, Divider, IconButton } from '@mui/material'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 export const ShoesCard = (props) => {
   const img = props.img
   const name = props.name
   const price = props.price
   const id = props.id
+  const { cart, setCart } = useContext(CartContext)
 
+  const addToCart = () => {
+    setCart((currItems) => {
+      const isItemFound = currItems.find((items) => items.id === id)
+      if (isItemFound) {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 }
+          } else {
+            return item
+          }
+        })
+      } else {
+        return [...currItems, { id, quantity: 1, price }]
+      }
+    })
+  }
+  const removeItem = (id) => {
+    setCart((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id)
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+  }
+
+  const getQuantityById = () => {
+    return cart.find((item) => item.id === id)?.quantity || 0
+  }
+  const quantityPerId = getQuantityById(id)
   return (
     <>
       <Card sx={{ maxWidth: 300 }}>
-        <CardMedia sx={{ height: 150 }} image={img} title={name} />
+        <CardMedia
+          sx={{ height: 150, textDecoration: 'none' }}
+          image={img}
+          title={name}
+          component={NavLink}
+          to={`/detail/${id}`}
+        />
         <CardContent>
           <Typography
             gutterBottom
@@ -37,15 +83,21 @@ export const ShoesCard = (props) => {
           >
             {price} COP
           </Button>
-          <Button
-            style={{ marginLeft: '5px' }}
-            variant='contained'
-            component={NavLink}
-            to={`/detail/${id}`}
-            size='small'
-          >
-            Ver mas
-          </Button>
+          {quantityPerId === 0 ? (
+            <IconButton
+              color='primary'
+              aria-label='add to shopping cart'
+              onClick={addToCart}
+            >
+              <AddShoppingCartIcon />
+            </IconButton>
+          ) : (
+            <ButtonGroup variant='contained' aria-label='Basic button group'>
+              <Button onClick={() => removeItem(id)}>-</Button>
+              <Button>{quantityPerId}</Button>
+              <Button onClick={addToCart}>+</Button>
+            </ButtonGroup>
+          )}
         </CardActions>
       </Card>
     </>

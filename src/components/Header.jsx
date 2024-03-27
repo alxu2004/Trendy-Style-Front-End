@@ -18,13 +18,22 @@ import AdbIcon from '@mui/icons-material/Adb'
 import useAuth from '../hooks/useAuth'
 import { useContext, useState } from 'react'
 import { UserContext } from '../context/UserContext'
+import { styled } from '@mui/material/styles'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import Badge from '@mui/material/Badge'
+import { CartContext } from '../context/CartContext'
 
 export const Header = ({ searchTerm, onSearchChange, onSearch, scroll }) => {
   const { user, logout } = useContext(UserContext)
+  const { cart } = useContext(CartContext)
 
   const { isLoggedIn, setIsLoggedIn } = useAuth()
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
+
+  const quantity = cart.reduce((accumulated, curr) => {
+    return accumulated + curr.quantity
+  }, 0)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -51,6 +60,14 @@ export const Header = ({ searchTerm, onSearchChange, onSearch, scroll }) => {
     onSearch()
     scroll()
   }
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: '0 4px',
+    },
+  }))
 
   return (
     <AppBar position='static' color=''>
@@ -200,7 +217,7 @@ export const Header = ({ searchTerm, onSearchChange, onSearch, scroll }) => {
               display: 'flex',
               alignItems: 'center',
               width: '30%',
-              marginRight: '100px',
+              marginRight: '50px',
             }}
           >
             <input
@@ -239,6 +256,16 @@ export const Header = ({ searchTerm, onSearchChange, onSearch, scroll }) => {
               <img src={loup} alt='' width='25px' height='auto' />
             </button>
           </div>
+          <IconButton
+            aria-label='cart'
+            style={{ marginRight: '50px' }}
+            component={NavLink}
+            to='/shopping-cart'
+          >
+            <StyledBadge badgeContent={quantity} color='secondary'>
+              <ShoppingCartIcon />
+            </StyledBadge>
+          </IconButton>
           <Box sx={{ flexGrow: 0 }}>
             {isLoggedIn ? (
               <>

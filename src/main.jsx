@@ -3,13 +3,17 @@ import './index.css'
 import App from './App'
 import { UserProvider } from './context/UserContext'
 import { AuthProvider } from './context/AuthContext'
+import { CartProvider } from './context/CartContext'
 
-const root = document.getElementById("root");
+const root = document.getElementById('root')
 
 ReactDOM.render(
   <AuthProvider>
     <UserProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </UserProvider>
-  </AuthProvider>, root
+  </AuthProvider>,
+  root,
 )

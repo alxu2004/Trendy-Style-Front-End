@@ -14,6 +14,13 @@ export const Access = () => {
       text: 'su correo o contraseña no coinsiden',
     })
   }
+  const showAlertSuccessCreate = () => {
+    Swal.fire({
+      icon: 'succes',
+      title: '¡Cuenta creada!',
+      text: '¡Su cruenta se ha creado correctamente!',
+    })
+  }
 
   const { saveUser } = useContext(UserContext)
 
@@ -94,7 +101,7 @@ export const Access = () => {
           alert('Error en el registro')
           throw new Error('Network response was not ok')
         } else {
-          alert('Se ha registrado correctamente')
+          showAlertSuccessCreate()
           setRegisterFormData({
             name: '',
             email: '',

@@ -19,7 +19,7 @@ import { AdminDropCategoryAcount } from './components/AdminDropCategoryAcount'
 import { AdminDropProductAcount } from './components/AdminDropProductAcount'
 import { CashPayment } from './components/CashPayment'
 import { TransferPayment } from './components/TransferPayment'
-
+import { ShoppingCart } from './components/ShoppingCart'
 function App() {
   return (
     <>
@@ -31,6 +31,7 @@ function App() {
           <Route path='/men' element={<Men />} />
           <Route path='/women' element={<Women />} />
           <Route path='/child' element={<Child />} />
+          <Route path='/shopping-cart' element={<ShoppingCart/>} />
           <Route path='/payment/cash' element={<CashPayment />} />
           <Route path='/payment/transfer' element={<TransferPayment />} />
           <Route element={<PrivateRoutesUser />}>

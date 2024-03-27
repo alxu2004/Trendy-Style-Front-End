@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { useLocation} from 'react-router-dom'
 import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
@@ -9,18 +9,23 @@ import Stack from '@mui/material/Stack'
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import Modal from '@mui/material/Modal'
-import { NavLink } from 'react-router-dom'
+import { ButtonGroup, IconButton } from '@mui/material'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import { CartContext } from '../context/CartContext'
 
 export const ProductDetailId = () => {
   const location = useLocation()
   const [idToSearch, setIdToSearch] = useState('')
   const [productDetail, setProductDetail] = useState({})
-  const [openModal, setOpenModal] = useState(false)
+  const { cart, setCart } = useContext(CartContext)
+  const price = productDetail.price
+  const id = productDetail.id
+
+  
 
   useEffect(() => {
     if (location) {
-      let idUrl = location.pathname.slice(
+      const idUrl = location.pathname.slice(
         location.pathname.lastIndexOf('/'),
         location.pathname.length,
       )
@@ -35,6 +40,7 @@ export const ProductDetailId = () => {
       )
       const data = await detailId.json()
       return data
+      
     }
 
     if (idToSearch !== '') {
@@ -43,15 +49,6 @@ export const ProductDetailId = () => {
       })
     }
   }, [idToSearch])
-
-  const handleOpenModal = () => {
-    setOpenModal(true)
-  }
-
-  const handleCloseModal = () => {
-    setOpenModal(false)
-  }
-
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -59,7 +56,46 @@ export const ProductDetailId = () => {
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }))
+  
+  
 
+  const quantity = cart.reduce((accumulated, curr) => {
+    return accumulated + curr.quantity
+  }, 0)
+
+  const addToCart = () => {
+    setCart((currItems) => {
+      const isItemFound = currItems.find((items) => items.id === id)
+      if (isItemFound) {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 }
+          } else {
+            return item
+          }
+        })
+      } else {
+        return [...currItems, { idToSearch, quantity: 1, price }]
+      }
+    })
+  }
+  const removeItem = (id) => {
+    setCart((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id)
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+  }
+
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={0}>
@@ -107,17 +143,23 @@ export const ProductDetailId = () => {
                   marginBottom={2}
                   marginTop={2}
                 >
-                  <Button
-                    variant='contained'
-                    color='success'
-                    onClick={handleOpenModal}
-                  >
-                    {' '}
-                    {/* Asigna la función para abrir el modal */}
-                    Comprar
-                  </Button>
+                  {quantity === 0 ? (
+            <IconButton
+              color='primary'
+              aria-label='add to shopping cart'
+              onClick={addToCart}
+            >
+              <AddShoppingCartIcon />
+            </IconButton>
+          ) : (
+            <ButtonGroup variant='contained' aria-label='Basic button group'>
+              <Button onClick={() => removeItem(id)}>-</Button>
+              <Button>{quantity}</Button>
+              <Button onClick={addToCart}>+</Button>
+            </ButtonGroup>
+          )}
                   <Typography gutterBottom variant='h4' component='div'>
-                    ${productDetail.price}
+                    {productDetail.price}
                   </Typography>
                 </Stack>
               </Typography>
@@ -125,48 +167,7 @@ export const ProductDetailId = () => {
           </Card>
         </Grid>
       </Grid>
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            width: 400,
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
-            border: '2px solid #000',
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          <Typography
-            id='modal-modal-title'
-            variant='h6'
-            component='h2'
-            textAlign='center'
-            style={{ marginBottom: '20px' }}
-          >
-            Seleccione metodo de pago
-          </Typography>
-          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Button variant='contained' component={NavLink} to='/payment/cash'>
-              Efectivo
-            </Button>
-            <Button
-              variant='contained'
-              component={NavLink}
-              to='/payment/transfer'
-            >
-              Transferencia
-            </Button>
-          </div>
-        </Box>
-      </Modal>
+      
     </Box>
   )
 }
