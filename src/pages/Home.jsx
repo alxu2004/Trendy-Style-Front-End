@@ -2,6 +2,7 @@ import { Ad } from '../components/Ad'
 import { ShoesCards } from '../components/ShoesCards'
 import { Header } from './../components/Header'
 import { useState, useEffect, useRef } from 'react'
+import { Footer } from '../components/Footer'
 
 export const Home = () => {
   const [products, setProducts] = useState([])
@@ -60,6 +61,7 @@ export const Home = () => {
         searchResults={searchResults.length > 0 ? searchResults : products}
         section={sectionRef}
       />
+      <Footer/>
     </>
   )
 }

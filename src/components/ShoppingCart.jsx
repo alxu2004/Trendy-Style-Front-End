@@ -1,21 +1,92 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from '@mui/material'
+import { Header } from '../components/Header'
 
 export const ShoppingCart = () => {
-  const {cart} = useContext(CartContext)
+  const { cart } = useContext(CartContext)
 
-  const quantity = cart.reduce((accumulated, curr) => {
-    return accumulated + curr.quantity
-  }, 0)
+  // const quantity = cart.reduce((accumulated, curr) => {
+  //   return accumulated + curr.quantity
+  // }, 0)
 
-  const totalPrice = cart.reduce((accumulated, curr)=>{
+  const totalPrice = cart.reduce((accumulated, curr) => {
     return accumulated + curr.quantity * curr.price
-  },0)
+  }, 0)
   return (
-      <>
-        <p>cantidad de productos {quantity}</p>
-        <p>total{totalPrice}</p>
-        <button onClick={()=> console.log(cart)} >mirar</button>
-      </>
+    <>
+      <Header />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginTop: '20px',
+        }}
+      >
+        {cart.map((car, index) => (
+          <Card
+            key={index}
+            sx={{ display: 'flex', width: '60%', marginBottom: '20px' }}
+          >
+            <CardMedia
+              component='img'
+              sx={{ width: 151 }}
+              image={car.img}
+              alt='Live from space album cover'
+            />
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <CardContent sx={{ flex: '1 0' }}>
+                <Typography component='div' variant='h5'>
+                  {car.name}
+                </Typography>
+                <Typography
+                  variant='subtitle1'
+                  color='text.secondary'
+                  component='div'
+                >
+                  cantidad : {car.quantity}
+                </Typography>
+              </CardContent>
+            </Box>
+            <Box>
+              <CardContent sx={{ flex: '1 0' }}>
+                <Typography
+                  component='div'
+                  variant='subtitle1'
+                  color='text.secondary'
+                >
+                  Precio : {car.price}
+                </Typography>
+                <Typography
+                  component='div'
+                  variant='subtitle1'
+                  color='text.secondary'
+                >
+                  Total : {car.total}
+                </Typography>
+              </CardContent>
+            </Box>
+          </Card>
+        ))}
+        <Typography component='div' variant='h5'>
+          TOTAL : {totalPrice}
+        </Typography>
+        <Button
+          variant='contained'
+          color='success'
+          style={{ marginTop: '10px' }}
+        >
+          Validar Carrito
+        </Button>
+      </div>
+    </>
   )
 }

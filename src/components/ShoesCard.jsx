@@ -20,20 +20,24 @@ export const ShoesCard = (props) => {
 
   const addToCart = () => {
     setCart((currItems) => {
-      const isItemFound = currItems.find((items) => items.id === id)
+      const isItemFound = currItems.find((item) => item.id === id);
       if (isItemFound) {
         return currItems.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 }
+            const updatedQuantity = item.quantity + 1;
+            const totalPrice = updatedQuantity * item.price;
+            return { ...item, quantity: updatedQuantity, total: totalPrice };
           } else {
-            return item
+            return item;
           }
-        })
+        });
       } else {
-        return [...currItems, { id, quantity: 1, price }]
+        const totalPrice = price * 1; 
+        return [...currItems, { id, name, img, quantity: 1, price, total: totalPrice }];
       }
-    })
-  }
+    });
+  };
+  
   const removeItem = (id) => {
     setCart((currItems) => {
       if (currItems.find((item) => item.id === id)?.quantity === 1) {
@@ -41,7 +45,7 @@ export const ShoesCard = (props) => {
       } else {
         return currItems.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 }
+            return { ...item, name, img, quantity: item.quantity - 1 }
           } else {
             return item
           }

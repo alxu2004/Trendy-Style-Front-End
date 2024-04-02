@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Header } from '../components/Header'
 import { ShoesCard } from '../components/ShoesCard'
 import { Box, Grid } from '@mui/material'
+import { Footer } from '../components/Footer'
 
 export const Men = () => {
   const [productsMen, setProductsMen] = useState([])
@@ -56,6 +57,7 @@ export const Men = () => {
           ))}
         </Grid>
       </Box>
+      <Footer/>
     </>
   )
 }
