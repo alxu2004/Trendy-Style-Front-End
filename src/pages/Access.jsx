@@ -18,7 +18,7 @@ export const Access = () => {
     Swal.fire({
       icon: 'succes',
       title: '¡Cuenta creada!',
-      text: '¡Su cruenta se ha creado correctamente!',
+      text: '¡Su cuenta se ha creado correctamente!',
     })
   }
 
