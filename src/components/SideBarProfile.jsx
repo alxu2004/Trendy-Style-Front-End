@@ -42,11 +42,6 @@ export const SideBarProfile = () => {
                 <ListItemText primary='Mi Cuenta' />
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton component={NavLink} to='/profile/add-acount'>
-                <ListItemText primary='Agregar datos personales' />
-              </ListItemButton>
-            </ListItem>
             <ListItem disablePadding></ListItem>
             <Divider />
             <ListItem disablePadding>

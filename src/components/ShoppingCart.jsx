@@ -9,14 +9,21 @@ import {
   Typography,
 } from '@mui/material'
 import { Header } from '../components/Header'
+import { AuthContext } from '../context/AuthContext'
+import { NavLink } from 'react-router-dom'
 
 export const ShoppingCart = () => {
   const { cart } = useContext(CartContext)
-
+  const isLoggedIn = useContext(AuthContext)
   // const quantity = cart.reduce((accumulated, curr) => {
   //   return accumulated + curr.quantity
   // }, 0)
-
+  let toPath
+  if (isLoggedIn.isLoggedIn === true) {
+    toPath = '/payment/transfer'
+  } else {
+    toPath = '/payment/cash'
+  }
   const totalPrice = cart.reduce((accumulated, curr) => {
     return accumulated + curr.quantity * curr.price
   }, 0)
@@ -83,6 +90,8 @@ export const ShoppingCart = () => {
           variant='contained'
           color='success'
           style={{ marginTop: '10px' }}
+          component={NavLink}
+          to={toPath}
         >
           Validar Carrito
         </Button>

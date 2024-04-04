@@ -62,7 +62,7 @@ export const ProfileAddAcount = () => {
           }}
         >
           <Typography variant='h4' style={{ textAlign: 'center' }}>
-            Edit Profile
+            Editar Perfil
           </Typography>
           <form onSubmit={handleSubmit}>
             <div>

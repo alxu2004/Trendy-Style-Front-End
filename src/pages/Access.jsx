@@ -1,10 +1,11 @@
 import '../assets/Styles.css'
 import { loginF, registerF } from '../functions/login'
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import useAuth from './../hooks/useAuth'
 import { UserContext } from '../context/UserContext'
 import Swal from 'sweetalert2'
+import { Button } from '@mui/material'
 
 export const Access = () => {
   const showAlertError = () => {
@@ -120,6 +121,15 @@ export const Access = () => {
 
   return (
     <main className='m-container'>
+      <Button
+        variant='contained'
+        size='large'
+        style={{ backgroundColor: '#339989', color: 'white' }}
+        component={NavLink}
+        to='/'
+      >
+        Volver
+      </Button>
       <div className='container'>
         <section className='back-box'>
           <div className='back-box-login'>

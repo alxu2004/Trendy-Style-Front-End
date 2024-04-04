@@ -149,12 +149,11 @@ export const Header = ({ searchTerm, onSearchChange, onSearch, scroll }) => {
               </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant='h5'
             noWrap
-            component='a'
-            href='#app-bar-with-responsive-menu'
+            component={NavLink}
+            to='/'
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -166,7 +165,7 @@ export const Header = ({ searchTerm, onSearchChange, onSearch, scroll }) => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Trendy
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button
